@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Attendance Files &middot; The Parth Sarthi Attendance Dossier</title>
+<meta name="description" content="Ninety-two school days, fifty-two absences and one unbroken sixteen-day vanishing. The Daily Forensic examines the attendance register of Parth Sarthi, Grade 11 Science INT A, Roll 19.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink);
+       font-family: 'Source Serif 4', Georgia, serif; overflow-x: hidden; }
+img { max-width: 100%; height: auto; }
+
+:root {
+  --paper: #f7e5e1;
+  --ink:   #1a1a1a;
+  --gold:  #c74a3e;
+  --mid:   #6f5651;
+  --light: #eed0ca;
+  --flame: #e0685a;
+}
+
+/* ── progress ───────────────────────────── */
+#progress-bar { position: fixed; top: 0; left: 0; height: 3px;
+  background: var(--gold); z-index: 2000; width: 0%; transition: width .1s linear; }
+
+/* ── masthead ───────────────────────────── */
+.masthead { position: sticky; top: 0; z-index: 1000; background: var(--ink);
+  color: var(--paper); text-align: center; padding: 1.2rem 2rem 1rem;
+  border-bottom: 4px solid var(--gold); transition: padding .3s; }
+.masthead.compact { padding: .5rem 2rem; }
+.masthead-top { display: flex; justify-content: space-between; align-items: center;
+  font-family: 'Oswald', sans-serif; font-size: .65rem; letter-spacing: .2em;
+  color: #888; text-transform: uppercase; margin-bottom: .6rem;
+  max-height: 40px; overflow: hidden; transition: opacity .3s, max-height .3s; }
+.masthead.compact .masthead-top { opacity: 0; max-height: 0; margin: 0; }
+.paper-name { font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 7vw, 4.8rem); font-weight: 900; line-height: 1;
+  letter-spacing: -.01em; transition: font-size .3s; }
+.masthead.compact .paper-name { font-size: clamp(1.3rem, 3vw, 2rem); }
+.section-of { font-family: 'Oswald', sans-serif; font-size: .7rem;
+  letter-spacing: .42em; text-transform: uppercase; color: var(--flame);
+  margin-bottom: .3rem; }
+.paper-tagline { font-family: 'Oswald', sans-serif; font-size: .68rem;
+  letter-spacing: .38em; color: var(--gold); text-transform: uppercase;
+  margin-top: .4rem; max-height: 30px; overflow: hidden;
+  transition: opacity .3s, max-height .3s; }
+.masthead.compact .paper-tagline { opacity: 0; max-height: 0; margin: 0; }
+
+/* ── strips ─────────────────────────────── */
+.home-link-bar { background: var(--ink); color: #999; font-family: 'Oswald', sans-serif;
+  font-size: .6rem; letter-spacing: .28em; text-transform: uppercase;
+  padding: .55rem 1rem; text-align: center; }
+.home-link-bar a { color: var(--gold); text-decoration: none; }
+.home-link-bar .sep { margin: 0 .6rem; color: #444; }
+.wanted-ribbon { background: var(--gold); color: var(--ink); text-align: center;
+  font-family: 'Oswald', sans-serif; font-size: .7rem; font-weight: 700;
+  letter-spacing: .5em; text-transform: uppercase; padding: .5rem 1rem; }
+
+/* ── head block ─────────────────────────── */
+.container { max-width: 920px; margin: 0 auto; padding: 3rem 1.5rem; }
+.article-category { font-family: 'Oswald', sans-serif; font-size: .68rem;
+  letter-spacing: .32em; text-transform: uppercase; color: var(--gold);
+  border-bottom: 1px solid var(--gold); padding-bottom: .4rem;
+  display: inline-block; margin-bottom: 1.4rem; }
+.headline { font-family: 'Playfair Display', serif; font-weight: 900;
+  font-size: clamp(1.9rem, 5vw, 3.5rem); line-height: 1.08; letter-spacing: -.015em; }
+.headline em { font-style: italic; }
+.subheadline { font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: clamp(1.05rem, 2vw, 1.35rem); line-height: 1.6; color: #555;
+  border-bottom: 2px solid var(--ink); padding-bottom: 1.2rem; margin-top: 1.2rem; }
+.byline { font-family: 'Oswald', sans-serif; font-size: .7rem; letter-spacing: .15em;
+  text-transform: uppercase; color: var(--mid); border-bottom: 1px solid #eddad6;
+  padding: 1rem 0 1.2rem; }
+.byline span { color: var(--ink); font-weight: 600; }
+
+/* ── prose ──────────────────────────────── */
+.article-body, .body-wide, .body-reversed { display: grid; gap: 2.5rem;
+  grid-template-columns: 2fr 1fr; }
+.body-reversed { grid-template-columns: 300px 1fr; }
+.body-single { max-width: 720px; margin: 0 auto; }
+.main-text p { font-size: 1rem; line-height: 1.88; color: #222;
+  text-align: justify; margin-bottom: 1.4rem; }
+.main-text > p:first-of-type::first-letter {
+  font-family: 'Playfair Display', serif; font-weight: 900; font-size: 4.5rem;
+  line-height: .75; float: left; padding: .35rem .55rem 0 0; color: var(--ink); }
+.section-head { font-family: 'Oswald', sans-serif; font-size: .72rem;
+  letter-spacing: .32em; text-transform: uppercase; color: var(--ink);
+  border-bottom: 1px solid #e2cdc8; padding-bottom: .5rem;
+  margin: 2.6rem 0 1.4rem; }
+.body-single > p { font-size: 1rem; line-height: 1.88; color: #222;
+  text-align: justify; margin-bottom: 1.4rem; }
+
+/* ── pull quotes & callouts ─────────────── */
+.pull-quote { font-family: 'Playfair Display', serif; font-style: italic;
+  font-weight: 700; font-size: clamp(1.2rem, 2.4vw, 1.75rem); line-height: 1.4;
+  border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink);
+  padding: 1.4rem 0; margin: 2.4rem 0; color: var(--ink); }
+.pull-quote cite { display: block; font-family: 'Oswald', sans-serif; font-style: normal;
+  font-size: .62rem; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--mid); margin-top: 1rem; }
+.pull-quote cite a { color: var(--gold); text-decoration: none;
+  border-bottom: 1px solid var(--gold); }
+.pull-quote cite a:hover { color: var(--ink); border-color: var(--ink); }
+.highlight-box, .callout-box { background: var(--ink); color: #e2cdc8;
+  border-left: 6px solid var(--gold); padding: 1.5rem 1.6rem; margin: 2rem 0;
+  font-size: .96rem; line-height: 1.8; }
+.highlight-box p { font-size: .96rem; line-height: 1.8; color: #e2cdc8;
+  margin-bottom: .9rem; text-align: left; }
+.highlight-box p:last-child { margin-bottom: 0; }
+.highlight-box-title, .callout-box-title { font-family: 'Oswald', sans-serif;
+  font-size: .62rem; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .8rem; }
+.disclaimer { background: rgba(199,74,62,.14); border-left: 4px solid var(--gold);
+  padding: 1rem 1.2rem; font-family: 'Oswald', sans-serif; font-size: .7rem;
+  letter-spacing: .1em; line-height: 1.9; text-transform: uppercase;
+  color: #444; margin: 1.6rem 0; }
+
+/* ── sidebar ────────────────────────────── */
+.sidebar { border-left: 2px solid var(--ink); padding-left: 1.6rem; }
+.sidebar-left  { border-right: 2px solid var(--ink); padding-right: 1.6rem;
+                 border-left: none; padding-left: 0; }
+.sidebar-right { border-left: 2px solid var(--ink); padding-left: 1.6rem; }
+.sidebar-box { border-bottom: 1px solid #e2cdc8; padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem; }
+.sidebar-title { font-family: 'Oswald', sans-serif; font-size: .62rem;
+  letter-spacing: .3em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 1rem; }
+.score-card { background: var(--ink); padding: 1.2rem 1.3rem;
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.score-number { font-family: 'Playfair Display', serif; font-weight: 900;
+  font-size: 3.6rem; line-height: 1; color: var(--gold); }
+.score-label { font-family: 'Oswald', sans-serif; font-size: .6rem;
+  letter-spacing: .18em; text-transform: uppercase; color: #888; line-height: 1.8; }
+.trait-row { margin-bottom: .9rem; }
+.trait-name { font-family: 'Oswald', sans-serif; font-size: .6rem;
+  letter-spacing: .16em; text-transform: uppercase; color: #555;
+  display: flex; justify-content: space-between; margin-bottom: .35rem; }
+.bar-track { height: 4px; background: var(--light); }
+.bar-fill { height: 100%; background: var(--ink); width: 0%;
+  transition: width 1.4s cubic-bezier(.16,1,.3,1); }
+.fact-item { display: flex; gap: .7rem; margin-bottom: .8rem;
+  font-size: .88rem; line-height: 1.6; color: #444; }
+.fact-icon { color: var(--gold); font-size: .8rem; line-height: 1.5; }
+.witness-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: #e2cdc8; border: 1px solid #e2cdc8; }
+.witness-card { background: var(--paper); padding: .9rem; text-align: center; }
+.witness-val { font-family: 'Playfair Display', serif; font-weight: 900;
+  font-size: 1.5rem; color: var(--ink); }
+.witness-label { font-family: 'Oswald', sans-serif; font-size: .55rem;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--mid); margin-top: .3rem; }
+
+/* ── figures ────────────────────────────── */
+.chart-box { background: #fff; border: 1px solid #eddad6; padding: 1.4rem;
+  margin: 2rem 0; }
+.chart-box-title { font-family: 'Oswald', sans-serif; font-size: .68rem;
+  letter-spacing: .24em; text-transform: uppercase; color: var(--ink); }
+.chart-box-sub { font-family: 'Source Serif 4', serif; font-style: italic;
+  font-size: .78rem; color: #777; margin-top: .3rem; margin-bottom: 1rem; }
+
+/* ── full-bleed bands ───────────────────── */
+.dark-band { background: var(--ink); color: var(--paper); padding: 4rem 2rem; }
+.dark-band-inner { max-width: 1100px; margin: 0 auto; display: grid;
+  grid-template-columns: repeat(3, 1fr); gap: 2.5rem; text-align: center; }
+.dark-stat-num { font-family: 'Playfair Display', serif; font-weight: 900;
+  font-size: clamp(3rem, 6vw, 5rem); color: var(--gold); line-height: 1; }
+.dark-stat-label { font-family: 'Oswald', sans-serif; font-size: .62rem;
+  letter-spacing: .22em; text-transform: uppercase; color: #888; margin-top: .6rem;
+  line-height: 1.8; }
+.gold-band { background: var(--gold); color: var(--ink); padding: 4rem 2rem;
+  text-align: center; }
+.gold-band-quote { font-family: 'Playfair Display', serif; font-weight: 900;
+  font-size: clamp(1.4rem, 3vw, 2.2rem); line-height: 1.35; max-width: 900px;
+  margin: 0 auto; }
+.gold-band-attr { font-family: 'Oswald', sans-serif; font-size: .62rem;
+  letter-spacing: .3em; text-transform: uppercase; margin-top: 1.4rem; }
+.chart-band { background: #fff; border-top: 1px solid #eddad6;
+  border-bottom: 1px solid #eddad6; padding: 3.5rem 2rem; }
+.chart-band-title { font-family: 'Playfair Display', serif; font-weight: 900;
+  font-size: clamp(1.4rem, 2.5vw, 2rem); }
+
+/* ── chapter divider ────────────────────── */
+.chapter-band { background: #f5dcd7; border-top: 3px solid var(--ink);
+  border-bottom: 1px solid #e2cdc8; padding: 2.4rem 2rem; }
+.chapter-band-inner { max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: baseline; gap: 1.6rem; }
+.chapter-num { font-family: 'Playfair Display', serif; font-weight: 900;
+  font-size: 4rem; color: var(--gold); line-height: 1; }
+.chapter-label { font-family: 'Oswald', sans-serif; font-size: .62rem;
+  letter-spacing: .3em; text-transform: uppercase; color: var(--mid); }
+.chapter-title { font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: clamp(1.2rem, 2.3vw, 1.8rem); margin-top: .3rem; }
+
+/* ── feature extras ─────────────────────── */
+.comparison-box { border: 2px solid var(--ink); margin: 2rem 0; }
+.comparison-box-title { background: var(--ink); color: var(--paper);
+  font-family: 'Oswald', sans-serif; font-size: .64rem; letter-spacing: .28em;
+  text-transform: uppercase; padding: .7rem 1rem; }
+.compare-cols { display: grid; grid-template-columns: repeat(3, 1fr); }
+.compare-col { padding: 1.2rem; border-right: 1px solid #e2cdc8; }
+.compare-col:last-child { border-right: none; }
+.compare-col-head { font-family: 'Oswald', sans-serif; font-size: .6rem;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: .8rem; }
+.compare-col ul { list-style: none; margin: 0; padding: 0; }
+.compare-col li { list-style: none; font-size: .88rem; line-height: 1.7;
+  color: #444; margin-bottom: .5rem; padding-left: 1rem; position: relative; }
+.compare-col li::before { content: '\2022'; position: absolute; left: 0;
+  color: var(--gold); font-size: .6rem; top: .4rem; }
+.circuit-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.circuit-table th { background: var(--ink); color: var(--paper);
+  font-family: 'Oswald', sans-serif; font-size: .6rem; letter-spacing: .2em;
+  text-transform: uppercase; padding: .8rem; text-align: left; }
+.circuit-table td { padding: .8rem; border-bottom: 1px solid #e2cdc8;
+  color: #444; line-height: 1.6; }
+.circuit-table tbody tr:nth-child(even) { background: #f5dcd7; }
+.circuit-table td.num { font-family: 'Playfair Display', serif; font-weight: 900;
+  color: var(--gold); }
+.table-scroll { overflow-x: auto; }
+.ornament { border: none; text-align: center; margin: 3rem auto; }
+.ornament::after { content: '\2022  \2022  \2022'; color: var(--gold);
+  letter-spacing: .5em; font-size: .8rem; }
+
+/* ── dossier extras ─────────────────────── */
+.id-card-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  border: 2px solid var(--ink); margin: 2rem 0; }
+.id-half { padding: 1.6rem; position: relative; }
+.id-half:first-child { background: var(--ink); color: var(--paper); }
+.id-label { font-family: 'Oswald', sans-serif; font-size: .58rem;
+  letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
+.id-name { font-family: 'Playfair Display', serif; font-weight: 900;
+  font-size: 1.6rem; margin: .5rem 0 1rem; }
+.id-field { font-family: 'Oswald', sans-serif; font-size: .64rem;
+  letter-spacing: .1em; text-transform: uppercase; line-height: 2.2;
+  color: inherit; opacity: .85; }
+.classification-stamp { display: inline-block; border: 2px solid var(--gold);
+  color: var(--gold); font-family: 'Oswald', sans-serif; font-size: .58rem;
+  letter-spacing: .28em; text-transform: uppercase; padding: .4rem .8rem;
+  transform: rotate(-2deg); margin-top: 1rem; }
+
+/* ── close ──────────────────────────────── */
+.footer-tags { display: flex; flex-wrap: wrap; gap: .6rem; margin: 3rem 0 1.5rem; }
+.tag { border: 1px solid var(--ink); color: var(--ink); font-family: 'Oswald', sans-serif;
+  font-size: .58rem; letter-spacing: .2em; text-transform: uppercase;
+  padding: .3rem .8rem; }
+.back-to-top-section { border-top: 3px double var(--ink); margin-top: 3rem;
+  padding-top: 3rem; text-align: center; }
+.back-to-top-inner { display: inline-block; background: var(--ink);
+  border: 2px solid var(--gold); padding: 2rem 3rem; position: relative; }
+.back-to-top-inner::before { content: ''; position: absolute; inset: 4px;
+  border: 1px solid #333; pointer-events: none; }
+.back-to-top-label { font-family: 'Oswald', sans-serif; font-size: .58rem;
+  letter-spacing: .45em; text-transform: uppercase; color: #888; }
+.back-to-top-btn { display: inline-block; margin-top: 1.2rem; padding: .7rem 2rem;
+  border: 1px solid var(--gold); color: var(--gold); font-family: 'Oswald', sans-serif;
+  font-size: .62rem; letter-spacing: .24em; text-transform: uppercase;
+  text-decoration: none; transition: background .3s, color .3s; }
+.back-to-top-btn:hover { background: var(--gold); color: var(--ink); }
+.dedication { max-width: 720px; margin: 2.5rem auto 0; text-align: center;
+  font-family: 'Source Serif 4', serif; font-style: italic; font-size: .92rem;
+  line-height: 1.8; color: #777; border-top: 1px solid #e2cdc8; padding-top: 1.6rem; }
+.paper-footer { background: var(--ink); color: #666; text-align: center;
+  padding: 2.2rem 1rem 1.6rem; border-top: 4px solid var(--gold);
+  font-family: 'Oswald', sans-serif; font-size: .6rem; letter-spacing: .28em;
+  text-transform: uppercase; line-height: 2.2; }
+.footer-name { font-family: 'Playfair Display', serif; font-weight: 900;
+  font-size: 1.7rem; color: var(--paper); letter-spacing: -.01em;
+  text-transform: none; margin-bottom: .3rem; }
+.paper-footer a { color: var(--gold); text-decoration: none;
+  border-bottom: 1px solid var(--gold); }
+
+/* ── reveal ─────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(44px);
+  transition: opacity .85s cubic-bezier(.16,1,.3,1),
+              transform .85s cubic-bezier(.16,1,.3,1); }
+.reveal.in { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: .1s; }
+.reveal-d2 { transition-delay: .22s; }
+
+/* ── report-specific (attendance ledger, strips, roster) ── */
+.ledger { display: flex; flex-direction: column; gap: 1.2rem; }
+.ledger-month-label { font-family: 'Oswald', sans-serif; font-size: .58rem;
+  letter-spacing: .28em; text-transform: uppercase; color: var(--mid);
+  margin-bottom: .55rem; }
+.ledger-cells { display: flex; flex-wrap: wrap; gap: 5px; }
+.ledger-cell { width: clamp(30px, 5.6vw, 46px); height: clamp(30px, 5.6vw, 46px);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: clamp(.66rem, 1.7vw, .88rem);
+  border: 1px solid var(--ink); background: transparent; color: var(--ink); }
+.ledger-cell.abs { background: var(--ink); color: var(--paper); }
+.ledger-cell.block { background: var(--gold); color: var(--ink);
+  border-color: var(--gold); }
+.ledger-cell.wed { border-top: 3px solid var(--gold); }
+.legend { display: flex; flex-wrap: wrap; gap: 1.4rem; margin-top: 1.3rem;
+  font-family: 'Oswald', sans-serif; font-size: .56rem; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--mid); }
+.legend-key { display: inline-flex; align-items: center; gap: .5rem; }
+.legend-box { width: 15px; height: 15px; border: 1px solid var(--ink);
+  display: inline-block; }
+.legend-box.pres { background: transparent; }
+.legend-box.abs { background: var(--ink); }
+.legend-box.block { background: var(--gold); border-color: var(--gold); }
+.legend-box.wed { background: transparent; border-top: 3px solid var(--gold); }
+
+.block-strip { display: flex; flex-wrap: wrap; gap: 5px; margin: 1.2rem 0 .4rem; }
+.block-day { background: var(--gold); color: var(--ink);
+  font-family: 'Playfair Display', serif; font-weight: 700; font-size: .74rem;
+  padding: .32rem .5rem; letter-spacing: .02em; }
+.seq { font-family: 'Oswald', sans-serif; font-size: .8rem; letter-spacing: .16em;
+  text-transform: uppercase; color: #888; line-height: 2; }
+
+.week-strip { display: flex; align-items: stretch; gap: 6px; min-width: 560px;
+  height: 190px; border-bottom: 1px solid #e2cdc8; padding-top: .5rem; }
+.week-col { flex: 1; display: grid; grid-template-rows: 1fr auto; gap: .45rem;
+  text-align: center; }
+.week-bar-slot { display: flex; align-items: flex-end; justify-content: center; }
+.week-bar { width: 100%; background: var(--ink); }
+.week-bar.zero { background: var(--gold); min-height: 4px; }
+.week-tag { font-family: 'Oswald', sans-serif; font-size: .46rem;
+  letter-spacing: .06em; text-transform: uppercase; color: #999; }
+
+.mini-strip { display: flex; flex-wrap: wrap; gap: 5px; margin: 1.2rem 0; }
+.mini-cell { width: 34px; height: 34px; display: flex; align-items: center;
+  justify-content: center; font-family: 'Playfair Display', serif;
+  font-weight: 700; font-size: .78rem; border: 1px solid var(--ink);
+  background: transparent; color: var(--ink); }
+.mini-cell.abs { background: var(--ink); color: var(--paper); }
+
+.roster-table tr.subject, .roster-table tbody tr.subject:nth-child(even) {
+  background: var(--gold); }
+.roster-table tr.subject td { color: var(--ink); border-bottom-color: #a63c31; }
+.roster-table tr.subject td.name { font-weight: 600; }
+.roster-table td.name { white-space: nowrap; }
+.roster-table td.rate { font-family: 'Playfair Display', serif; font-weight: 900;
+  color: var(--ink); }
+.roster-table tr.subject td.rate { color: var(--ink); }
+.verdict-list li { list-style: none; font-size: .94rem; line-height: 1.75;
+  color: #e2cdc8; padding-left: 1.3rem; position: relative; margin-bottom: .7rem; }
+.verdict-list li::before { content: '\2022'; position: absolute; left: 0;
+  color: var(--gold); font-size: .62rem; top: .5rem; }
+.verdict-list li b { color: var(--paper); font-weight: 600; }
+
+/* ── responsive (desktop-first) ─────────── */
+@media (max-width: 768px) {
+  .container { padding: 2rem 1.1rem; }
+  .masthead { padding: .8rem 1rem .7rem; }
+  .masthead-top { font-size: .55rem; }
+  .headline { font-size: clamp(1.4rem, 6vw, 2.2rem) !important; }
+  .article-body, .body-wide, .body-reversed, .body-single { grid-template-columns: 1fr !important; }
+  .sidebar { border-left: none; border-top: 2px solid var(--ink);
+    padding-left: 0; padding-top: 1.5rem; }
+  .sidebar-left { border-right: none; border-bottom: 2px solid var(--ink);
+    padding-right: 0; padding-bottom: 1.5rem; order: 2; }
+  .sidebar-right { border-left: none; border-top: 2px solid var(--ink);
+    padding-left: 0; padding-top: 1.5rem; order: 2; }
+  .photo-spread, .id-card-wrap, .evidence-grid, .chart-grid-2, .chart-grid-3,
+  .dark-band-inner, .compare-cols { grid-template-columns: 1fr !important; }
+  .compare-col { border-right: none; border-bottom: 1px solid #e2cdc8; }
+  .method-grid { grid-template-columns: 1fr 1fr; }
+  .chapter-band-inner { flex-direction: column; gap: .6rem; }
+  .witness-grid { grid-template-columns: 1fr; }
+  .score-number { font-size: 2.5rem; }
+  .main-text p, .body-single > p { text-align: left; }
+  .wanted-ribbon { letter-spacing: .28em; font-size: .6rem; }
+  .back-to-top-inner { padding: 1.4rem 1.2rem; display: block; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<header class="masthead" id="masthead">
+  <div class="masthead-top">
+    <span>Established 2026 &middot; Vol. XLII</span>
+    <span>Bangalore, India</span>
+    <span>Friday, October 2, 2026</span>
+  </div>
+  <div class="section-of">The Daily Forensic Presents</div>
+  <div class="paper-name">The Attendance Files</div>
+  <div class="paper-tagline">All The Absences That&rsquo;s Fit To Print</div>
+</header>
+
+<div class="home-link-bar">
+  <a href="#">&larr; The Daily Forensic</a><span class="sep">&middot;</span>The Attendance Files<span class="sep">&middot;</span>Vol. XLII No. 117
+</div>
+
+<div class="wanted-ribbon">Subject File &middot; Roll 19 &middot; Present On 40 Of 92 Days &middot; Still At Large</div>
+
+<div class="container">
+
+  <div class="disclaimer">
+    Methodological Disclaimer: every figure below is drawn from a single
+    attendance register covering 01-Jun-2026 to 28-Sep-2026. Half-day codes are
+    excluded from all calculations. A percentage here is an absence rate wearing a
+    percentage sign: 43.8% means 56.2% of those days were missed. Interpret with
+    caution, skepticism, and a sense of humour.
+  </div>
+
+  <div class="article-category">The Attendance Files &middot; Enhanced Absence Edition</div>
+
+  <h1 class="headline">Fifty-Two Absences, Ninety-Two School Days, and One Unbroken
+    Sixteen-Day Vanishing: <em>The Parth Sarthi Attendance Dossier</em></h1>
+
+  <p class="subheadline">Grade 11 Science INT A, Roll 19, was recorded present on 40 of
+    92 school days. The Wednesdays, the blocks, the class median of 16 and the sixteen
+    consecutive misses in the middle of the year are examined here, at length, and
+    without rounding.</p>
+
+  <div class="byline">
+    By <span>Dr. Rohan Pixel</span> &nbsp;|&nbsp; Forensic Correspondent
+    &nbsp;|&nbsp; <span>The Daily Forensic</span> &nbsp;|&nbsp; October 2, 2026
+  </div>
+
+  <div class="id-card-wrap reveal">
+    <div class="id-half">
+      <div class="id-label">Subject File</div>
+      <div class="id-name">PARTH SARTHI</div>
+      <div class="id-field">Class: Grade 11 Science INT A</div>
+      <div class="id-field">Roll: 19</div>
+      <div class="id-field">Data Range: 01-Jun-2026 to 28-Sep-2026</div>
+      <div class="id-field">School Days Held: 92</div>
+      <div class="id-field">Present: 40 &nbsp;&middot;&nbsp; Absent: 52</div>
+    </div>
+    <div class="id-half">
+      <div class="id-label">Classification</div>
+      <div class="id-name">43.5%</div>
+      <div class="id-field">Overall Attendance Rate &middot; 40 of 92</div>
+      <div class="id-field">Rank In School: 1417 of 1420</div>
+      <div class="id-field">Rank In Class: 30 of 30</div>
+      <div class="id-field">Class Median Absences: 16</div>
+      <div class="id-field">Gap To School Average: &minus;41.6 Points</div>
+      <div class="classification-stamp">Bottom 0.3% Of School</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="chapter-band">
+  <div class="chapter-band-inner">
+    <div class="chapter-num">I</div>
+    <div>
+      <div class="chapter-label">Part One of Four</div>
+      <div class="chapter-title">The Record</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="article-body">
+
+    <div class="main-text">
+      <p>Ninety-two school days were held between 01-Jun-2026 and 28-Sep-2026. On forty
+      of them Parth Sarthi was marked present. On the remaining fifty-two he was not.
+      The resulting rate of 43.5 per cent places him 1417th of 1420 students in the
+      school and thirtieth of thirty in his own class, 14.1 points below the
+      next-lowest classmate. He is not at the bottom of a tight group. He is separated
+      from the rest of the class. What follows is the register set out in full: the
+      months, the Wednesdays, the blocks, the weekends, and the sixteen consecutive
+      days in the middle of the year on which he did not appear at all. The register does not record where
+      he was; it records, with some emphasis, that he was not.</p>
+
+      <div class="section-head">I &middot; How To Read This Register</div>
+
+      <p>Three ideas carry the whole document. The register marks each student on each
+      school day as either Present or Absent, and nothing else is used here; half-day
+      codes are excluded from every calculation. The phrase &ldquo;N of M&rdquo; means
+      present on N days out of M possible days of that type, so &ldquo;7 of 16&rdquo;
+      for Wednesday means the school held 16 Wednesdays in the period and he was
+      present on 7 of them. The rate is always the same formula, always in percent:
+      <em>rate = (N present / M possible days) &times; 100</em>. So 7 of 16 = 43.8%.</p>
+
+      <p>Two denominator warnings apply throughout. Weekday percentages use only the
+      days that weekday actually occurred, and September is incomplete because the data
+      stops on 28-Sep, so September has fewer Mondays and Fridays than June had. The
+      full-year figure uses all 92 school days, including 8 Saturdays and 1 Sunday. Sunday occurs exactly once in this register and has not been seen since.
+      Our investigative team worked around the clock for nearly twelve consecutive
+      minutes, then read the same CSV a second time, out of an abundance of caution. The second read matched the first,
+      exactly as hoped.</p>
+
+      <div class="section-head">II &middot; The Headline Figures</div>
+
+      <p>The top-line numbers are difficult to soften. Attempts were made in an
+      earlier draft and have been stricken from the record. Days present: 40. Days absent:
+      52. Total school days: 92, which is simply 40 plus 52. Overall attendance rate:
+      43.5%, or 40 divided by 92. The school-wide average across all 1,420 students and
+      all days is 85.0%. The average for his own 30-person class is 80.7%. The gap to
+      the school average is &minus;41.6 points.</p>
+
+      <p>Ranking follows from those figures. In the whole school he is 1417th of 1420,
+      with three students below him. In his class he is 30th of 30, last. The class
+      median for absences is 16 days; he recorded 52, which is 3.25 times the median, well outside the range in which the word typical can be used.
+      He is not slightly behind. He is the lowest attendance in his class, and in the
+      bottom 0.3 per cent of the whole school. The three students below him
+      are elsewhere in the building and were not available for comment.</p>
+    </div>
+
+    <aside class="sidebar">
+      <div class="score-card">
+        <div class="score-number">43.5%</div>
+        <div class="score-label">Overall attendance<br>40 of 92 school days<br>&minus;41.6 vs school</div>
+      </div>
+
+      <div class="sidebar-box">
+        <div class="sidebar-title">The Wednesday Collapse</div>
+        <div class="trait-row">
+          <div class="trait-name"><span>June Wednesdays</span><span>75%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-w="75%"></div></div>
+        </div>
+        <div class="trait-row">
+          <div class="trait-name"><span>July Wednesdays</span><span>40%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-w="40%"></div></div>
+        </div>
+        <div class="trait-row">
+          <div class="trait-name"><span>August Wednesdays</span><span>33%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-w="33%"></div></div>
+        </div>
+        <div class="trait-row">
+          <div class="trait-name"><span>September Wednesdays</span><span>25%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-w="25%"></div></div>
+        </div>
+      </div>
+
+      <div class="sidebar-box">
+        <div class="sidebar-title">Filed Facts</div>
+        <div class="fact-item"><span class="fact-icon">&bull;</span><span>40 present days out of 92; 52 absences against a class median of 16.</span></div>
+        <div class="fact-item"><span class="fact-icon">&bull;</span><span>Longest attendance run of the year: 5 days, achieved twice.</span></div>
+        <div class="fact-item"><span class="fact-icon">&bull;</span><span>Best 10-day window all year: 70%. Windows at 80% or better: 0.</span></div>
+        <div class="fact-item"><span class="fact-icon">&bull;</span><span>18 absence episodes; mean gap between them, 1.7 school days.</span></div>
+      </div>
+
+      <div class="sidebar-box" style="border-bottom:none;">
+        <div class="sidebar-title">Witness Stand</div>
+        <div class="witness-grid">
+          <div class="witness-card">
+            <div class="witness-val">1417</div>
+            <div class="witness-label">School rank, of 1420</div>
+          </div>
+          <div class="witness-card">
+            <div class="witness-val">30</div>
+            <div class="witness-label">Class rank, of 30</div>
+          </div>
+          <div class="witness-card">
+            <div class="witness-val">16</div>
+            <div class="witness-label">Class median absences</div>
+          </div>
+          <div class="witness-card">
+            <div class="witness-val">44.4%</div>
+            <div class="witness-label">Chance an absence ends next day</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<div class="dark-band">
+  <div class="dark-band-inner">
+    <div class="reveal">
+      <div class="dark-stat-num">43.5%</div>
+      <div class="dark-stat-label">Overall attendance rate<br>40 present of 92 school days</div>
+    </div>
+    <div class="reveal reveal-d1">
+      <div class="dark-stat-num">1417</div>
+      <div class="dark-stat-label">Rank of 1420 school-wide<br>Three students below him</div>
+    </div>
+    <div class="reveal reveal-d2">
+      <div class="dark-stat-num">16</div>
+      <div class="dark-stat-label">Consecutive school days absent<br>23-Jul-2026 to 11-Aug-2026</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="body-single">
+
+    <div class="section-head">III &middot; Month By Month</div>
+
+    <p>His best month was his first month, and he has not beaten it since;
+    the bar went up in June and nobody, including him, has moved it. June ran at
+    54.2%, then July fell to 36.0%, August recovered slightly to 39.1% and September
+    sits at 45.0%. He never once crossed 50% in a month after June. Split by half, the
+    first half of the period (June plus July) ran at 44.9% and the second half (August
+    plus September) at 41.9%. The two halves differ by only 3 points, so there is no
+    meaningful improvement and no meaningful decline. The level is flat, and the level
+    is low; a flat line, drawn at the wrong height. September looks better only because it is a shorter, incomplete month; incomplete months are generous to everyone.</p>
+
+    <div class="chart-box reveal">
+      <div class="chart-box-title">Fig. A &middot; Monthly Attendance Rate, Percent Present</div>
+      <div class="chart-box-sub">The best month was the first month. It has not been beaten since.</div>
+      <canvas id="chartMonths" aria-label="Bar chart of monthly attendance rates: June 54.2, July 36.0, August 39.1, September 45.0 percent" role="img"></canvas>
+    </div>
+
+    <div class="table-scroll">
+      <table class="circuit-table">
+        <thead>
+          <tr><th>Month</th><th>Present Of Possible</th><th>Rate</th><th>Days Missed</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>June 2026</td><td>13 of 24</td><td class="num">54.2%</td><td>11</td></tr>
+          <tr><td>July 2026</td><td>9 of 25</td><td class="num">36.0%</td><td>16</td></tr>
+          <tr><td>August 2026</td><td>9 of 23</td><td class="num">39.1%</td><td>14</td></tr>
+          <tr><td>September 2026</td><td>9 of 20</td><td class="num">45.0%</td><td>11</td></tr>
+          <tr><td>First half (Jun + Jul)</td><td>22 of 49</td><td class="num">44.9%</td><td>27</td></tr>
+          <tr><td>Second half (Aug + Sep)</td><td>18 of 43</td><td class="num">41.9%</td><td>25</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-head">IV &middot; Every Single Day, Laid Out</div>
+
+    <p>The register below is the whole year, one cell per school day, in order. Light
+    cells are days he attended. Dark cells are days he did not. The red corridor in
+    the middle is the sixteen-day block running from 23-Jul to 11-Aug, and a red rule
+    along the top edge of a cell marks a Wednesday. Read left to right, the year does
+    not look like a gradual decline. It looks like a working pattern with two states:
+    attending normally, or gone entirely. There is no third setting, and nothing in
+    92 days suggests one was attempted.</p>
+
+    <div class="chart-box reveal">
+      <div class="chart-box-title">Fig. B &middot; All 92 School Days, 01-Jun-2026 to 28-Sep-2026</div>
+      <div class="chart-box-sub">Forty light cells. Fifty-two dark ones. One red corridor in the middle.</div>
+      <div class="ledger" id="ledger"></div>
+      <div class="legend">
+        <span class="legend-key"><span class="legend-box pres"></span> Present</span>
+        <span class="legend-key"><span class="legend-box abs"></span> Absent</span>
+        <span class="legend-key"><span class="legend-box block"></span> Absent, inside the 16-day block</span>
+        <span class="legend-key"><span class="legend-box wed"></span> Wednesday</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="chapter-band">
+  <div class="chapter-band-inner">
+    <div class="chapter-num">II</div>
+    <div>
+      <div class="chapter-label">Part Two of Four</div>
+      <div class="chapter-title">The Days</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="body-single">
+
+    <div class="section-head">V &middot; Wednesdays: The Test-Day Pattern</div>
+
+    <p>The working hypothesis supplied to this desk before the data was opened is that
+    Wednesdays are when the class often has Aakash tests. The register supports taking
+    that seriously. This is the strongest day-of-week signal in the entire record. Sixteen
+    Wednesdays were held; he attended 7 and missed 9, a Wednesday rate of 43.8%. On all
+    nine Wednesdays he missed, the whole school was above 90% attendance: school was
+    open, normal, and everyone else came in, giving 9 of 9 = 100% school attendance on
+    exactly those days. On seven of those nine, his own class was above 80%. The class
+    average across his nine missed Wednesdays was 84.8%. His classmates sat the test.
+    He did not. The test proceeded without
+    him, as tests do.</p>
+
+    <div class="table-scroll">
+      <table class="circuit-table">
+        <thead>
+          <tr><th>Date</th><th>Parth</th><th>Class Present That Day</th><th>School Present That Day</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>03-Jun-2026</td><td>Present</td><td class="num">96.7%</td><td class="num">93.2%</td></tr>
+          <tr><td>10-Jun-2026</td><td>Present</td><td class="num">83.3%</td><td class="num">94.0%</td></tr>
+          <tr><td>17-Jun-2026</td><td><b>Absent</b></td><td class="num">90.0%</td><td class="num">93.5%</td></tr>
+          <tr><td>24-Jun-2026</td><td>Present</td><td class="num">90.0%</td><td class="num">95.1%</td></tr>
+          <tr><td>01-Jul-2026</td><td><b>Absent</b></td><td class="num">90.0%</td><td class="num">94.6%</td></tr>
+          <tr><td>08-Jul-2026</td><td>Present</td><td class="num">96.7%</td><td class="num">95.9%</td></tr>
+          <tr><td>15-Jul-2026</td><td><b>Absent</b></td><td class="num">86.7%</td><td class="num">95.2%</td></tr>
+          <tr><td>22-Jul-2026</td><td>Present</td><td class="num">90.0%</td><td class="num">95.0%</td></tr>
+          <tr><td>29-Jul-2026</td><td><b>Absent</b></td><td class="num">93.3%</td><td class="num">93.5%</td></tr>
+          <tr><td>05-Aug-2026</td><td><b>Absent</b></td><td class="num">66.7%</td><td class="num">93.4%</td></tr>
+          <tr><td>12-Aug-2026</td><td>Present</td><td class="num">83.3%</td><td class="num">92.4%</td></tr>
+          <tr><td>19-Aug-2026</td><td><b>Absent</b></td><td class="num">86.7%</td><td class="num">91.5%</td></tr>
+          <tr><td>02-Sep-2026</td><td><b>Absent</b></td><td class="num">70.0%</td><td class="num">94.7%</td></tr>
+          <tr><td>09-Sep-2026</td><td><b>Absent</b></td><td class="num">86.7%</td><td class="num">91.1%</td></tr>
+          <tr><td>16-Sep-2026</td><td><b>Absent</b></td><td class="num">93.3%</td><td class="num">91.2%</td></tr>
+          <tr><td>23-Sep-2026</td><td>Present</td><td class="num">100.0%</td><td class="num">95.7%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The Wednesday rate is also falling, and it is falling in one direction only:
+    75% in June (3 of 4), 40% in July (2 of 5), 33% in August (1 of 3), 25% in
+    September (1 of 4). Four months, monotonic decline, no bounce. If Wednesday is test
+    day, he has gone from usually attending tests to almost never attending them.</p>
+
+    <div class="pull-quote">
+      &ldquo;On all nine Wednesdays he missed, the school was above ninety per cent.
+      The building was open. The register was being read. He was not in it.&rdquo;
+      <cite>The Attendance Register &middot; Reluctant Source, Identity Withheld</cite>
+    </div>
+
+    <p>Honesty requires the limiting evidence be stated alongside the claim. His Friday
+    rate is lower still, at 37.5% (6 of 16), and his Saturday rate is far lower, at
+    12.5% (1 of 8). Wednesday accounts for 9 absences against 10 on Friday. The gap
+    between his weekday rates is small: 52.9, 52.9, 43.8, 47.1, 37.5, a spread of only
+    15 points from Monday to Friday, which is not a dramatic single-day effect. The
+    honest summary is that he skips roughly half of everything, Wednesdays included,
+    and Wednesday is the one that is visibly deteriorating. Wednesday, notably, is the
+    only day that arrived with a hypothesis attached.</p>
+
+    <div class="chart-box reveal">
+      <div class="chart-box-title">Fig. C &middot; Absences Recorded vs Absences Expected At Random</div>
+      <div class="chart-box-sub">Saturday is the only day where chance is too generous to him.</div>
+      <canvas id="chartWeekday" aria-label="Radar chart comparing recorded absences by weekday against absences expected if he skipped at random" role="img"></canvas>
+    </div>
+
+    <div class="table-scroll">
+      <table class="circuit-table">
+        <thead>
+          <tr><th>Weekday</th><th>Present Of Days Held</th><th>Rate</th><th>Absences</th><th>Expected If Random</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Monday</td><td>9 of 17</td><td class="num">52.9%</td><td>8</td><td>9.6</td></tr>
+          <tr><td>Tuesday</td><td>9 of 17</td><td class="num">52.9%</td><td>8</td><td>9.6</td></tr>
+          <tr><td>Wednesday</td><td>7 of 16</td><td class="num">43.8%</td><td>9</td><td>9.0</td></tr>
+          <tr><td>Thursday</td><td>8 of 17</td><td class="num">47.1%</td><td>9</td><td>9.6</td></tr>
+          <tr><td>Friday</td><td>6 of 16</td><td class="num">37.5%</td><td>10</td><td>9.0</td></tr>
+          <tr><td>Saturday</td><td>1 of 8</td><td class="num">12.5%</td><td>7</td><td>4.5</td></tr>
+          <tr><td>Sunday</td><td>0 of 1</td><td class="num">0.0%</td><td>1</td><td>0.6</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>&ldquo;Expected if random&rdquo; applies his overall absence rate of 52 in 92
+    to the number of days each weekday occurred. Monday to Friday all sit within
+    roughly 1.5 of expected, so weekday to weekday there is no large bias. Saturday is
+    the exception: 7 actual absences against 4.5 expected. Crossed with the months, the
+    grid below shows Wednesday moving 75, 40, 33, 25 while Tuesday moves 40, 50, 50,
+    75 and is his strongest weekday by September. He is drifting away from Wednesday
+    precisely while drifting toward Tuesday. Tuesday was not consulted on the matter.</p>
+
+    <div class="table-scroll">
+      <table class="circuit-table">
+        <thead>
+          <tr><th>Month</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>June</td><td class="num">60</td><td class="num">40</td><td class="num">75</td><td class="num">50</td><td class="num">50</td><td class="num">50</td><td>n/a</td></tr>
+          <tr><td>July</td><td class="num">25</td><td class="num">50</td><td class="num">40</td><td class="num">40</td><td class="num">40</td><td class="num">0</td><td>n/a</td></tr>
+          <tr><td>August</td><td class="num">60</td><td class="num">50</td><td class="num">33</td><td class="num">50</td><td class="num">33</td><td class="num">0</td><td class="num">0</td></tr>
+          <tr><td>September</td><td class="num">67</td><td class="num">75</td><td class="num">25</td><td class="num">50</td><td class="num">25</td><td class="num">0</td><td>n/a</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-head">VI &middot; The Weekends</div>
+
+    <p>Nine weekend sessions fall inside the data range. He attended one of them: a
+    Saturday on 27-Jun-2026, when the school-wide rate was 37.4% and he was one of the
+    few who came in. He never attended another. The weekend record is 1 of 9, or 11.1%.
+    Most of these Saturdays were genuinely low-attendance days, so several of those
+    absences are not really his choice; the interesting one is the Saturday he did
+    attend, at which 62.6% of the school stayed home. By the standards of this
+    register, a highly social day.</p>
+
+    <div class="table-scroll">
+      <table class="circuit-table">
+        <thead>
+          <tr><th>Date</th><th>Day</th><th>Status</th><th>Note</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>13-Jun-2026</td><td>Saturday</td><td><b>Absent</b></td><td>School 35.5%</td></tr>
+          <tr><td>27-Jun-2026</td><td>Saturday</td><td>Present</td><td>School 37.4%, he was one of the few who came</td></tr>
+          <tr><td>11-Jul-2026</td><td>Saturday</td><td><b>Absent</b></td><td>School 22.8%</td></tr>
+          <tr><td>25-Jul-2026</td><td>Saturday</td><td><b>Absent</b></td><td>School 16.8%</td></tr>
+          <tr><td>08-Aug-2026</td><td>Saturday</td><td><b>Absent</b></td><td>School 35.3%</td></tr>
+          <tr><td>15-Aug-2026</td><td>Saturday</td><td><b>Absent</b></td><td>Independence Day, school 27.1%</td></tr>
+          <tr><td>29-Aug-2026</td><td>Saturday</td><td><b>Absent</b></td><td>School 31.0%</td></tr>
+          <tr><td>30-Aug-2026</td><td>Sunday</td><td><b>Absent</b></td><td>School 1.7%, effectively a holiday</td></tr>
+          <tr><td>26-Sep-2026</td><td>Saturday</td><td><b>Absent</b></td><td>School 42.0%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-head">VII &middot; Dates When The Whole School Stayed Home</div>
+
+    <p>These are the legitimate low-attendance days, every date on which the school rate
+    fell below 60%. He was absent on 8 of the 9. The single day he attended was 27-Jun.
+    So even on genuine closure days he usually does not come in, and the one time he
+    did, almost nobody else did.</p>
+
+    <div class="table-scroll">
+      <table class="circuit-table">
+        <thead>
+          <tr><th>Date</th><th>School Rate</th><th>Parth</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>11-Jul-2026</td><td class="num">22.8%</td><td>Absent</td></tr>
+          <tr><td>13-Jun-2026</td><td class="num">35.5%</td><td>Absent</td></tr>
+          <tr><td>25-Jul-2026</td><td class="num">16.8%</td><td>Absent</td></tr>
+          <tr><td>27-Jun-2026</td><td class="num">37.4%</td><td>Present</td></tr>
+          <tr><td>08-Aug-2026</td><td class="num">35.3%</td><td>Absent</td></tr>
+          <tr><td>15-Aug-2026</td><td class="num">27.1%</td><td>Absent</td></tr>
+          <tr><td>29-Aug-2026</td><td class="num">31.0%</td><td>Absent</td></tr>
+          <tr><td>26-Sep-2026</td><td class="num">42.0%</td><td>Absent</td></tr>
+          <tr><td>30-Aug-2026</td><td class="num">1.7%</td><td>Absent</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<div class="gold-band">
+  <div class="gold-band-quote">The school is about 9.5 points worse on the days he
+  misses. That is a real effect, and it is nowhere near large enough to explain a
+  student dropping from 85.0% to 43.5%.</div>
+  <div class="gold-band-attr">Exhibit Analysis &middot; Section VIII</div>
+</div>
+
+<div class="chapter-band">
+  <div class="chapter-band-inner">
+    <div class="chapter-num">III</div>
+    <div>
+      <div class="chapter-label">Part Three of Four</div>
+      <div class="chapter-title">The Blocks</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="body-single">
+
+    <div class="section-head">VIII &middot; The Sixteen-Day Absence</div>
+
+    <p>The single largest feature of his year, and the reason the middle of the ledger
+    is red. From 23-Jul-2026 to 11-Aug-2026 he was absent for 16 consecutive school
+    days: 17.4% of the entire 92-day year, spanning 20 calendar days. In most jurisdictions twenty calendar
+    days is a holiday; in this register it is a finding.</p>
+
+    <div class="highlight-box">
+      <div class="highlight-box-title">The Sixteen-Day Block &middot; 23-Jul-2026 To 11-Aug-2026</div>
+      <div class="block-strip">
+        <span class="block-day">23 Jul</span><span class="block-day">24 Jul</span>
+        <span class="block-day">25 Jul</span><span class="block-day">27 Jul</span>
+        <span class="block-day">28 Jul</span><span class="block-day">29 Jul</span>
+        <span class="block-day">30 Jul</span><span class="block-day">31 Jul</span>
+        <span class="block-day">03 Aug</span><span class="block-day">04 Aug</span>
+        <span class="block-day">05 Aug</span><span class="block-day">06 Aug</span>
+        <span class="block-day">07 Aug</span><span class="block-day">08 Aug</span>
+        <span class="block-day">10 Aug</span><span class="block-day">11 Aug</span>
+      </div>
+      <p>Context immediately around it. Before: <span class="seq">20A 21P 22P 23A</span>,
+      meaning he attended exactly two days between two absence blocks. After breaking
+      it: <span class="seq">12P</span>, then <span class="seq">13A 14A 15A</span>, one
+      day back and then three more days out. He returned on 12-Aug for exactly one
+      day, presumably to collect something.</p>
+    </div>
+
+    <p>Across the whole period there are 18 absence episodes, listed here longest first.
+    Ten of the eighteen are single days. The other eight do the real damage.</p>
+
+    <div class="table-scroll">
+      <table class="circuit-table">
+        <thead>
+          <tr><th>Start</th><th>End</th><th>Length (School Days)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>23-Jul</td><td>11-Aug</td><td class="num">16</td></tr>
+          <tr><td>29-Jun</td><td>06-Jul</td><td class="num">6</td></tr>
+          <tr><td>13-Jun</td><td>17-Jun</td><td class="num">4</td></tr>
+          <tr><td>24-Sep</td><td>28-Sep</td><td class="num">4</td></tr>
+          <tr><td>13-Aug</td><td>15-Aug</td><td class="num">3</td></tr>
+          <tr><td>16-Sep</td><td>18-Sep</td><td class="num">3</td></tr>
+          <tr><td>04-Jun</td><td>05-Jun</td><td class="num">2</td></tr>
+          <tr><td>25-Jun</td><td>26-Jun</td><td class="num">2</td></tr>
+          <tr><td>14-Jul</td><td>15-Jul</td><td class="num">2</td></tr>
+          <tr><td>29-Aug</td><td>30-Aug</td><td class="num">2</td></tr>
+          <tr><td>09-Jun</td><td>09-Jun</td><td class="num">1</td></tr>
+          <tr><td>11-Jul</td><td>11-Jul</td><td class="num">1</td></tr>
+          <tr><td>20-Jul</td><td>20-Jul</td><td class="num">1</td></tr>
+          <tr><td>19-Aug</td><td>19-Aug</td><td class="num">1</td></tr>
+          <tr><td>02-Sep</td><td>02-Sep</td><td class="num">1</td></tr>
+          <tr><td>09-Sep</td><td>09-Sep</td><td class="num">1</td></tr>
+          <tr><td>11-Sep</td><td>11-Sep</td><td class="num">1</td></tr>
+          <tr><td>22-Sep</td><td>22-Sep</td><td class="num">1</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-head">IX &middot; Is It Him, Or Is The School Closed?</div>
+
+    <p>All 52 absences were sorted by what the rest of the school was doing that day.
+    Eleven fall on wide-miss days, when the whole school was under 75% present; those
+    are holidays or events and are not really his decision. Six more fall on class-miss
+    days, when his class was under 75% but the school was at 75% or over, so a group of
+    his classmates was also out. The remaining 35 are solo absences: days his class
+    turned up at 75% or better and he did not. On those 35 days the class average
+    attendance was 87.8%.</p>
+
+    <div class="chart-box reveal">
+      <div class="chart-box-title">Fig. D &middot; All 52 Absences, Classified By What The Rest Of The School Did</div>
+      <div class="chart-box-sub">Two thirds of the absences happen while the school is running normally.</div>
+      <canvas id="chartAttribution" aria-label="Doughnut chart: 35 solo absences, 6 class-miss days, 11 wide-miss days" role="img"></canvas>
+    </div>
+
+    <div class="table-scroll">
+      <table class="circuit-table">
+        <thead>
+          <tr><th>Category</th><th>Definition</th><th>Count</th><th>Share</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Wide-miss day</td><td>Whole school under 75% present</td><td class="num">11</td><td class="num">21.2%</td></tr>
+          <tr><td>Class-miss day</td><td>Class under 75%, school at 75% or over</td><td class="num">6</td><td class="num">11.5%</td></tr>
+          <tr><td>Solo absence</td><td>Class at 75% or over</td><td class="num">35</td><td class="num">67.3%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Average school attendance on the days he was absent was 80.9%, against 90.4% on
+    the days he was present. The school is about 9.5 points worse on the days he misses,
+    which is a real effect but far too small to explain him going from the 85.0% school
+    average down to 43.5%. School closures do not explain the record. Roughly two
+    thirds of his absences happen when school is running normally. The school, for its
+    part, held up its end.</p>
+
+    <div class="section-head">X &middot; Absence Dynamics</div>
+
+    <p>The record contains 18 absence episodes and 18 present stretches, with a mean gap
+    of 1.7 school days between episodes, a smallest gap of 1 day and a largest of 6. The
+    single most diagnostic number here is 8 of 18, or 44.4%: the chance that he returns
+    the day after an absence ends. On ten of eighteen occasions the absence continues
+    rather than ending after one day, which is why his absences arrive as blocks.</p>
+
+    <div class="table-scroll">
+      <table class="circuit-table">
+        <thead>
+          <tr><th>Present Stretches Of 3 Or More Days</th><th>Start</th><th>End</th><th>Length</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Stretch 1</td><td>01-Jun</td><td>03-Jun</td><td class="num">3 days</td></tr>
+          <tr><td>Stretch 2</td><td>10-Jun</td><td>12-Jun</td><td class="num">3 days</td></tr>
+          <tr><td>Stretch 3</td><td>18-Jun</td><td>24-Jun</td><td class="num">5 days</td></tr>
+          <tr><td>Stretch 4</td><td>07-Jul</td><td>10-Jul</td><td class="num">4 days</td></tr>
+          <tr><td>Stretch 5</td><td>20-Aug</td><td>28-Aug</td><td class="num">5 days</td></tr>
+          <tr><td>Stretch 6</td><td>03-Sep</td><td>08-Sep</td><td class="num">4 days</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Six such stretches exist across 92 days. His longest attendance run of the whole
+    year is 5 days, achieved twice. He has never held a longer one. No external cause is recorded for either ending.</p>
+
+    <div class="section-head">XI &middot; Weekly Rhythm</div>
+
+    <p>His overall 43.5% is not a steady 43.5% week after week. He swings between normal
+    weeks and total disappearances. Three weeks sit at exactly 0%: wk27, wk31 and wk32,
+    of which wk31 and wk32 are back to back and together make up the 16-day absence.
+    Weeks at 60% or better: wk24, wk26, wk29, wk36, wk37. Recent weeks are deteriorating
+    again, running 80%, then 60%, then 25%, then 33%, then 0% across wk36 to wk40.</p>
+
+    <div class="chart-box reveal">
+      <div class="chart-box-title">Fig. E &middot; Weekly Attendance Rate, wk23 To wk40</div>
+      <div class="chart-box-sub">Three weeks at zero. Two of them are consecutive.</div>
+      <div class="table-scroll">
+        <div class="week-strip" id="weekStrip"></div>
+      </div>
+      <div class="legend">
+        <span class="legend-key"><span class="legend-box abs"></span> Weeks at 60% or better and everything between</span>
+        <span class="legend-key"><span class="legend-box block"></span> Weeks at 0.0%</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="chart-band">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="chart-box-title">Fig. F &middot; Rolling 10-Day Window, Sampled Every 4 Sessions</div>
+    <div class="chart-band-title">XII &middot; The Rolling Window</div>
+    <div class="chart-box-sub">Best window of the year: 70%. Windows at 80% or better: none.</div>
+    <canvas id="chartRolling" aria-label="Line chart of the rolling ten-day attendance window from 12-Jun to 28-Sep, collapsing to zero in early August and sliding back to 20 percent in late September" role="img"></canvas>
+    <p style="max-width:720px; margin:1.6rem auto 0; font-size:1rem; line-height:1.88;
+       color:#222; text-align:justify;">
+      He has never once reached 80% in any 10-day stretch. The best window all year is
+      70%, the worst is 0%, and the shape is a V: collapse to 0% in early August,
+      recovery to 70% by late August, held through mid-September, then a fresh slide
+      from 70 down to 20 across the last four weeks. The August recovery has fully
+      unwound.
+    </p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="body-single">
+
+    <div class="section-head">XIII &middot; Recent Form</div>
+
+    <p>The last ten sessions in order: <span class="seq">16A 17A 18A 21P 22A 23P 24A 25A 26A 28A</span>.
+    He was absent on 8 of them and present on 2. An active run of 4 consecutive
+    absences is in progress as the data closes: 24, 25, 26 and 28 Sep. The streak was live at filing and may be live
+    as you read this.</p>
+
+    <div class="mini-strip" aria-label="Last ten sessions: eight absent, two present">
+      <span class="mini-cell abs">16</span><span class="mini-cell abs">17</span>
+      <span class="mini-cell abs">18</span><span class="mini-cell">21</span>
+      <span class="mini-cell abs">22</span><span class="mini-cell">23</span>
+      <span class="mini-cell abs">24</span><span class="mini-cell abs">25</span>
+      <span class="mini-cell abs">26</span><span class="mini-cell abs">28</span>
+    </div>
+
+  </div>
+</div>
+
+<div class="chapter-band">
+  <div class="chapter-band-inner">
+    <div class="chapter-num">IV</div>
+    <div>
+      <div class="chapter-label">Part Four of Four</div>
+      <div class="chapter-title">The Class</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="body-single">
+
+    <div class="section-head">XIV &middot; Patterns That Are NOT Present</div>
+
+    <p>Ruling things out is as useful as finding them. Six hypotheses were tested
+    against the register, and three of them fail. The three that survive do so on a
+    technicality.</p>
+
+    <div class="comparison-box">
+      <div class="comparison-box-title">Hypothesis Testing &middot; Six Claims, Three Surviving</div>
+      <div class="compare-cols">
+        <div class="compare-col">
+          <div class="compare-col-head">Skives Mondays or Fridays</div>
+          <ul>
+          <li>Not supported</li>
+          <li>Absences 8, 8, 9, 9, 10 across Mon to Fri against expected 9.6, 9.6, 9.0, 9.6, 9.0.</li>
+          </ul>
+        </div>
+        <div class="compare-col">
+          <div class="compare-col-head">Skives Wednesdays</div>
+          <ul>
+          <li>Partly supported and worsening</li>
+          <li>43.8%, falling every month: 75 to 40 to 33 to 25.</li>
+          </ul>
+        </div>
+        <div class="compare-col">
+          <div class="compare-col-head">Avoids start or end of month</div>
+          <ul>
+          <li>Not supported</li>
+          <li>Exact tie: 20 of 46 in the first half of each month, 20 of 46 in the second.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="compare-cols">
+        <div class="compare-col">
+          <div class="compare-col-head">Gets worse over time</div>
+          <ul>
+          <li>Not supported</li>
+          <li>44.9% first half against 41.9% second half. Flat, not falling.</li>
+          </ul>
+        </div>
+        <div class="compare-col">
+          <div class="compare-col-head">School closures explain it</div>
+          <ul>
+          <li>Not supported</li>
+          <li>Only 11 of 52 absences land on wide-miss days.</li>
+          </ul>
+        </div>
+        <div class="compare-col">
+          <div class="compare-col-head">August was exam leave</div>
+          <ul>
+          <li>Partly supported</li>
+          <li>August ran 39.1%, but June and July were already low.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-head">XV &middot; The Rest Of The Class</div>
+
+    <p>Class range: 43.5% to 91.3%. The gap to the next-lowest student is 14.1 points,
+    which means he is not at the bottom of a tight group. He is separated from the rest
+    of the class. Every one of the thirty students is listed below, highest attendance
+    first. The list starts politely and ends the way you already know it
+    ends.</p>
+
+    <div class="table-scroll">
+      <table class="circuit-table roster-table">
+        <thead>
+          <tr><th>Student</th><th>Rate</th><th>Present / 92</th><th>Points Above Parth</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">Mukund Das Barman</td><td class="num rate">91.3%</td><td>84</td><td class="num">+47.8</td></tr>
+          <tr><td class="name">Arush Naveen Kumar</td><td class="num rate">90.2%</td><td>83</td><td class="num">+46.7</td></tr>
+          <tr><td class="name">Abhidarsh K Thampi</td><td class="num rate">88.0%</td><td>81</td><td class="num">+44.6</td></tr>
+          <tr><td class="name">Gaurika Paradkar</td><td class="num rate">88.0%</td><td>81</td><td class="num">+44.6</td></tr>
+          <tr><td class="name">Nithilan Manivannan</td><td class="num rate">88.0%</td><td>81</td><td class="num">+44.6</td></tr>
+          <tr><td class="name">Brenden Dennis James</td><td class="num rate">87.0%</td><td>80</td><td class="num">+43.5</td></tr>
+          <tr><td class="name">Irene Maria Regi</td><td class="num rate">87.0%</td><td>80</td><td class="num">+43.5</td></tr>
+          <tr><td class="name">Smriti Ram prasad</td><td class="num rate">87.0%</td><td>80</td><td class="num">+43.5</td></tr>
+          <tr><td class="name">PRAGYA VERMA</td><td class="num rate">85.9%</td><td>79</td><td class="num">+42.4</td></tr>
+          <tr><td class="name">S DIYA HASINI</td><td class="num rate">85.9%</td><td>79</td><td class="num">+42.4</td></tr>
+          <tr><td class="name">Anant Sharma</td><td class="num rate">84.8%</td><td>78</td><td class="num">+41.3</td></tr>
+          <tr><td class="name">MUKUND J NAIR</td><td class="num rate">84.8%</td><td>78</td><td class="num">+41.3</td></tr>
+          <tr><td class="name">Pratyush P Chandra</td><td class="num rate">84.8%</td><td>78</td><td class="num">+41.3</td></tr>
+          <tr><td class="name">Ruhani Chhibber</td><td class="num rate">84.8%</td><td>78</td><td class="num">+41.3</td></tr>
+          <tr><td class="name">Juhipriya Reddy Mudigolam</td><td class="num rate">83.7%</td><td>77</td><td class="num">+40.2</td></tr>
+          <tr><td class="name">Hrudhay Ugandhar Babu</td><td class="num rate">82.6%</td><td>76</td><td class="num">+39.1</td></tr>
+          <tr><td class="name">Jia Savanth</td><td class="num rate">82.6%</td><td>76</td><td class="num">+39.1</td></tr>
+          <tr><td class="name">Manas Singh</td><td class="num rate">82.6%</td><td>76</td><td class="num">+39.1</td></tr>
+          <tr><td class="name">Sanandita De</td><td class="num rate">82.6%</td><td>76</td><td class="num">+39.1</td></tr>
+          <tr><td class="name">Bhavitha R C</td><td class="num rate">81.5%</td><td>75</td><td class="num">+38.0</td></tr>
+          <tr><td class="name">Pranav Suryakant Thosar</td><td class="num rate">81.5%</td><td>75</td><td class="num">+38.0</td></tr>
+          <tr><td class="name">Taksh Dhimant Parekh</td><td class="num rate">81.5%</td><td>75</td><td class="num">+38.0</td></tr>
+          <tr><td class="name">Akshaya Sagar Lingareddy</td><td class="num rate">80.4%</td><td>74</td><td class="num">+37.0</td></tr>
+          <tr><td class="name">Aarav Bandyal</td><td class="num rate">79.3%</td><td>73</td><td class="num">+35.9</td></tr>
+          <tr><td class="name">VISHNU R E</td><td class="num rate">77.2%</td><td>71</td><td class="num">+33.7</td></tr>
+          <tr><td class="name">Vansh Pratap Singh</td><td class="num rate">76.1%</td><td>70</td><td class="num">+32.6</td></tr>
+          <tr><td class="name">Shanaya Sharma</td><td class="num rate">68.5%</td><td>63</td><td class="num">+25.0</td></tr>
+          <tr><td class="name">Avantika Sunder Tharoor</td><td class="num rate">62.0%</td><td>57</td><td class="num">+18.5</td></tr>
+          <tr><td class="name">Rishabh Vishwanath</td><td class="num rate">57.6%</td><td>53</td><td class="num">+14.1</td></tr>
+          <tr class="subject"><td class="name">PARTH SARTHI</td><td class="num rate">43.5%</td><td>40</td><td class="num">0.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>One classmate was located for comment. Manas Singh, eighteenth on the
+    list above at 82.6%, has been present for more of this register than the
+    subject has, and offered the following:</p>
+
+    <div class="pull-quote">
+      &ldquo;Teachers remember Parth more than the regulars, so who&rsquo;s the
+      real winner?&rdquo;
+      <cite>Manas Singh &middot; Classmate, Grade 11 Science INT A &middot; 82.6%
+      Attendance &middot; Full Statement In
+      <a href="https://thedailyforensic.github.io/the-manas-situation/"
+      target="_blank" rel="noopener">&ldquo;The Manas Situation&rdquo;</a></cite>
+    </div>
+
+    <div class="section-head">XVI &middot; What It Would Take</div>
+
+    <p>The arithmetic of recovery, stated plainly. To reach the class average of 80.7%
+    he would need 74 of 92 days present, which is 34 more days than he has. To clear an
+    80.0% threshold the figure is identical: 74 of 92, still +34. To reach the school
+    average of 85.0% he would need 78 of 92, which is +38. Since the year has only 92
+    days total and his longest ever run is 5 days, the class average is not reachable
+    inside this data range. He would need days the calendar does not
+    provide.</p>
+
+    <div class="table-scroll">
+      <table class="circuit-table">
+        <thead>
+          <tr><th>Target</th><th>Rate Needed</th><th>Days Present Needed</th><th>More Days Needed From 40</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Class average</td><td class="num">80.7%</td><td>74 of 92</td><td class="num">+34</td></tr>
+          <tr><td>80% threshold</td><td class="num">80.0%</td><td>74 of 92</td><td class="num">+34</td></tr>
+          <tr><td>School average</td><td class="num">85.0%</td><td>78 of 92</td><td class="num">+38</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-head">XVII &middot; The Verdict</div>
+
+    <p>Parth&rsquo;s record is not a gradual decline and it is not a scheduling quirk. It
+    is a stable pattern with two states: attending normally, or gone entirely. The
+    pattern has been kept with more consistency than the attendance itself.</p>
+
+    <div class="highlight-box">
+      <div class="highlight-box-title">Findings</div>
+      <ul class="verdict-list">
+        <li>He oscillates between weeks at 60 to 80% and weeks at 0%. He has had
+        <b>three separate 0% weeks</b>.</li>
+        <li>The mean gap between absence episodes is <b>1.7 school days</b>, and he has
+        only a <b>44.4%</b> chance of returning the day after an absence begins. This is
+        why his absences arrive as blocks, including one block of 16 consecutive days.</li>
+        <li>His absences are spread almost evenly across Monday to Friday, which argues
+        against a single-day dodge pattern. Wednesday is the exception worth noting:
+        <b>43.8%</b>, falling every single month, 75 down to 25, and on all 9 missed
+        Wednesdays the school was above 90% attendance.</li>
+        <li><b>35 of his 52 absences, or 67.3%</b>, fall on days when his class was at
+        75% attendance or better. School closures do not explain the record.</li>
+        <li>His best-ever 10-day window is <b>70%</b>. He has never held an 80% window.</li>
+        <li>He is <b>1417th of 1420</b> in the school and <b>last in his class of 30</b>,
+        with 52 absences against a class median of 16.</li>
+        <li>Current trajectory is downward again: <b>8 of the last 10 sessions absent</b>,
+        and <b>4 consecutive absences active right now</b>.</li>
+      </ul>
+    </div>
+
+    <div class="footer-tags">
+      <span class="tag">The Attendance Files</span>
+      <span class="tag">Absence Blocks</span>
+      <span class="tag">Wednesdays</span>
+      <span class="tag">Grade 11 Science INT A</span>
+      <span class="tag">Roll 19</span>
+      <span class="tag">Class Median 16</span>
+      <span class="tag">Bottom 0.3% Of School</span>
+      <span class="tag">92 School Days</span>
+      <span class="tag">Source: attendance_year.csv</span>
+    </div>
+
+    <div class="back-to-top-section">
+      <div class="back-to-top-inner">
+        <div class="back-to-top-label">End Of File</div><br>
+        <a class="back-to-top-btn" href="#masthead">Return To Masthead</a>
+      </div>
+    </div>
+
+    <div class="dedication">
+      Peer review conducted by one (1) peer, who was present for 43.5% of the drafting
+      session, who read it on a Tuesday, and who said &ldquo;yeah, the register is
+      right, I checked it twice.&rdquo;
+    </div>
+
+    <hr class="ornament">
+
+  </div>
+</div>
+
+<footer class="paper-footer">
+  <div class="footer-name">The Daily Forensic</div>
+  <div>Vol. XLII No. 117 &middot; The Attendance Files &middot; Filed October 2, 2026</div>
+  <div>
+    Generated by scripts/student_deepdive.py &middot; Data: sheets/attendance_year.csv
+    &middot; Reproduce with: python scripts/student_deepdive.py &quot;PARTH SARTHI&quot;
+  </div>
+  <div>
+    All Subjects Documented Without Permission &middot; The Wednesdays Remain Disputed
+    &middot; The Register Was Read Twice &middot; The Sixteen Days Are Not Coming Back
+    &middot; The Median Stays At 16
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+// ── house chrome: progress bar, compact masthead, reveals, trait bars ──
+const bar = document.getElementById('progress-bar');
+const mh = document.getElementById('masthead');
+if (bar || mh) window.addEventListener('scroll', () => {
+  if (bar) {
+    const h = document.body.scrollHeight - window.innerHeight;
+    bar.style.width = (window.scrollY / h * 100) + '%';
+  }
+  if (mh) mh.classList.toggle('compact', window.scrollY > 80);
+});
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Fallback: never leave content stuck invisible if the observer misses an entry.
+const revealInView = () => {
+  document.querySelectorAll('.reveal:not(.in)').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight * 0.92 && r.bottom > 0) el.classList.add('in');
+  });
+};
+window.addEventListener('scroll', revealInView, { passive: true });
+window.addEventListener('resize', revealInView);
+revealInView();
+window.addEventListener('load', () => setTimeout(revealInView, 400));
+setTimeout(revealInView, 1500);
+
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const fills = e.target.querySelectorAll('.bar-fill');
+    fills.forEach((f, i) => setTimeout(() => {
+      f.style.width = f.dataset.w || '0%';
+    }, i * 80 + 200));
+    barObs.unobserve(e.target);
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.sidebar, .sidebar-left, .sidebar-right')
+  .forEach(el => barObs.observe(el));
+
+// Fallback for trait bars, same guarantee as the reveal fallback above.
+const fillBarsInView = () => {
+  document.querySelectorAll('.sidebar, .sidebar-left, .sidebar-right').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top >= window.innerHeight * 0.9 || r.bottom <= 0) return;
+    el.querySelectorAll('.bar-fill').forEach((f, i) => {
+      if (f.dataset.done) return;
+      f.dataset.done = '1';
+      setTimeout(() => { f.style.width = f.dataset.w || '0%'; }, i * 80 + 200);
+    });
+  });
+};
+window.addEventListener('scroll', fillBarsInView, { passive: true });
+window.addEventListener('resize', fillBarsInView);
+fillBarsInView();
+window.addEventListener('load', () => setTimeout(fillBarsInView, 400));
+setTimeout(fillBarsInView, 1500);
+
+// ── the 92-day ledger ──
+const MONTHS = [
+  { name: 'June 2026', m: 6, days: [[1,'P'],[2,'P'],[3,'P'],[4,'A'],[5,'A'],[8,'P'],[9,'A'],[10,'P'],[11,'P'],[12,'P'],[13,'A'],[15,'A'],[16,'A'],[17,'A'],[18,'P'],[19,'P'],[22,'P'],[23,'P'],[24,'P'],[25,'A'],[26,'A'],[27,'P'],[29,'A'],[30,'A']] },
+  { name: 'July 2026', m: 7, days: [[1,'A'],[2,'A'],[3,'A'],[6,'A'],[7,'P'],[8,'P'],[9,'P'],[10,'P'],[11,'A'],[13,'P'],[14,'A'],[15,'A'],[16,'P'],[17,'P'],[20,'A'],[21,'P'],[22,'P'],[23,'A'],[24,'A'],[25,'A'],[27,'A'],[28,'A'],[29,'A'],[30,'A'],[31,'A']] },
+  { name: 'August 2026', m: 8, days: [[3,'A'],[4,'A'],[5,'A'],[6,'A'],[7,'A'],[8,'A'],[10,'A'],[11,'A'],[12,'P'],[13,'A'],[14,'A'],[15,'A'],[17,'P'],[18,'P'],[19,'A'],[20,'P'],[24,'P'],[25,'P'],[27,'P'],[28,'P'],[29,'A'],[30,'A'],[31,'P']] },
+  { name: 'September 2026', m: 9, days: [[1,'P'],[2,'A'],[3,'P'],[4,'P'],[7,'P'],[8,'P'],[9,'A'],[10,'P'],[11,'A'],[15,'P'],[16,'A'],[17,'A'],[18,'A'],[21,'P'],[22,'A'],[23,'P'],[24,'A'],[25,'A'],[26,'A'],[28,'A']] }
+];
+const BLOCK = new Set(['7-23','7-24','7-25','7-27','7-28','7-29','7-30','7-31',
+                        '8-3','8-4','8-5','8-6','8-7','8-8','8-10','8-11']);
+const WD = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+const ledger = document.getElementById('ledger');
+if (ledger) {
+  MONTHS.forEach(mo => {
+    const present = mo.days.filter(d => d[1] === 'P').length;
+    const wrap = document.createElement('div');
+    const label = document.createElement('div');
+    label.className = 'ledger-month-label';
+    label.textContent = mo.name + ' \u00b7 ' + present + ' of ' + mo.days.length + ' present';
+    const cells = document.createElement('div');
+    cells.className = 'ledger-cells';
+    mo.days.forEach(([d, st]) => {
+      const c = document.createElement('span');
+      const wd = new Date(2026, mo.m - 1, d).getDay();
+      c.className = 'ledger-cell ' + (st === 'A' ? 'abs' : 'pres');
+      if (BLOCK.has(mo.m + '-' + d)) c.classList.add('block');
+      if (wd === 3) c.classList.add('wed');
+      c.textContent = d;
+      c.title = d + ' ' + mo.name + ' \u00b7 ' + WD[wd] + ' \u00b7 ' +
+                (st === 'A' ? 'ABSENT' : 'PRESENT');
+      cells.appendChild(c);
+    });
+    wrap.appendChild(label);
+    wrap.appendChild(cells);
+    ledger.appendChild(wrap);
+  });
+}
+
+// ── weekly rhythm strip (wk23 to wk40) ──
+const WEEKS = [['wk23',60.0],['wk24',66.7],['wk25',40.0],['wk26',66.7],['wk27',0.0],
+               ['wk28',66.7],['wk29',60.0],['wk30',33.3],['wk31',0.0],['wk32',0.0],
+               ['wk33',16.7],['wk34',75.0],['wk35',66.7],['wk36',80.0],['wk37',60.0],
+               ['wk38',25.0],['wk39',33.3],['wk40',0.0]];
+const HELD = [5,6,5,6,5,6,5,6,5,6,6,4,6,5,5,4,6,1];
+const strip = document.getElementById('weekStrip');
+if (strip) {
+  WEEKS.forEach((w, i) => {
+    const col = document.createElement('div');
+    col.className = 'week-col';
+    col.title = w[0] + ' \u00b7 ' + w[1].toFixed(1) + '% present';
+    const slot = document.createElement('div');
+    slot.className = 'week-bar-slot';
+    const b = document.createElement('div');
+    b.className = 'week-bar' + (w[1] === 0 ? ' zero' : '');
+    b.style.height = (w[1] === 0 ? 4 : Math.max(w[1], 3)) + '%';
+    slot.appendChild(b);
+    const tag = document.createElement('div');
+    tag.className = 'week-tag';
+    tag.textContent = w[0].replace('wk', 'W');
+    col.appendChild(slot);
+    col.appendChild(tag);
+    strip.appendChild(col);
+  });
+}
+
+// ── figures ──
+if (window.Chart) {
+  Chart.defaults.font.family = "'Oswald', sans-serif";
+  Chart.defaults.font.size = 10;
+  Chart.defaults.color = '#444';
+  const gold = '#c74a3e', dark = '#1a1a1a', cream = '#f7e5e1', mid = '#888';
+
+  const axis = {
+    x: { grid: { display: false }, ticks: { font: { size: 9 }, color: '#777' } },
+    y: { grid: { color: '#f6e9e6' }, ticks: { font: { size: 9 }, color: '#777' } }
+  };
+
+  // Fig. A: monthly rates
+  const c1 = document.getElementById('chartMonths');
+  if (c1) new Chart(c1, {
+    type: 'bar',
+    data: {
+      labels: ['JUNE', 'JULY', 'AUGUST', 'SEPTEMBER'],
+      datasets: [{
+        label: 'Percent present',
+        data: [54.2, 36.0, 39.1, 45.0],
+        backgroundColor: [dark, gold, gold, gold],
+        borderColor: dark,
+        borderWidth: 1,
+        maxBarThickness: 74
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: true, aspectRatio: 1.9,
+      plugins: { legend: { display: false },
+        tooltip: { callbacks: { label: c => c.parsed.y + '% present' } } },
+      scales: {
+        x: axis.x,
+        y: { ...axis.y, min: 0, max: 100,
+             ticks: { font: { size: 9 }, color: '#777', callback: v => v + '%' } }
+      }
+    }
+  });
+
+  // Fig. C: weekday absences, recorded vs expected
+  const c2 = document.getElementById('chartWeekday');
+  if (c2) new Chart(c2, {
+    type: 'radar',
+    data: {
+      labels: ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'],
+      datasets: [
+        { label: 'Absences recorded', data: [8, 8, 9, 9, 10, 7, 1],
+          borderColor: dark, backgroundColor: 'rgba(26,26,26,.10)',
+          pointBackgroundColor: dark, borderWidth: 2 },
+        { label: 'Expected at random', data: [9.6, 9.6, 9.0, 9.6, 9.0, 4.5, 0.6],
+          borderColor: gold, backgroundColor: 'rgba(199,74,62,.16)',
+          pointBackgroundColor: gold, borderWidth: 2 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: true, aspectRatio: 1.5,
+      plugins: { legend: { position: 'bottom',
+        labels: { font: { size: 9 }, boxWidth: 12, color: '#555' } } },
+      scales: { r: { min: 0, max: 12, ticks: { display: false, stepSize: 3 },
+        grid: { color: '#eddad6' }, angleLines: { color: '#eddad6' },
+        pointLabels: { font: { size: 10 }, color: '#555' } } }
+    }
+  });
+
+  // Fig. D: 52 absences classified
+  const c3 = document.getElementById('chartAttribution');
+  if (c3) new Chart(c3, {
+    type: 'doughnut',
+    data: {
+      labels: ['Solo absence (35)', 'Class-miss day (6)', 'Wide-miss day (11)'],
+      datasets: [{
+        data: [35, 6, 11],
+        backgroundColor: [dark, gold, '#e09086'],
+        borderColor: '#fff', borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: true, aspectRatio: 1.7, cutout: '58%',
+      plugins: { legend: { position: 'bottom',
+        labels: { font: { size: 9 }, boxWidth: 12, color: '#555' } } }
+    }
+  });
+
+  // Fig. F: rolling 10-day window
+  const c4 = document.getElementById('chartRolling');
+  if (c4) new Chart(c4, {
+    type: 'line',
+    data: {
+      labels: ['12 Jun','17 Jun','23 Jun','27 Jun','02 Jul','08 Jul','13 Jul','17 Jul',
+               '23 Jul','28 Jul','03 Aug','07 Aug','12 Aug','17 Aug','24 Aug','29 Aug',
+               '02 Sep','08 Sep','15 Sep','21 Sep','25 Sep','28 Sep'],
+      datasets: [{
+        label: '10-day attendance rate',
+        data: [70,40,60,60,40,30,50,70,50,40,10,0,10,20,50,70,70,70,70,50,30,20],
+        borderColor: gold, backgroundColor: 'rgba(199,74,62,.14)',
+        fill: true, tension: .25, borderWidth: 2,
+        pointRadius: 3, pointBackgroundColor: dark, pointBorderColor: dark
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: true, aspectRatio: 2.4,
+      plugins: { legend: { display: false },
+        tooltip: { callbacks: { label: c => c.parsed.y + '% over the window' } } },
+      scales: {
+        x: { grid: { display: false },
+             ticks: { font: { size: 9 }, color: '#777', maxRotation: 0,
+                      autoSkip: true, maxTicksLimit: 11 } },
+        y: { grid: { color: '#f6e9e6' }, min: 0, max: 100,
+             ticks: { font: { size: 9 }, color: '#777', callback: v => v + '%' } }
+      }
+    }
+  });
+}
+</script>
+</body>
+</html>

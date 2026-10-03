@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Attendance Files &middot; A Special Section of The Daily Forensic</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --paper: #f7e5e1;
+    --ink:   #1a1a1a;
+    --gold:  #c74a3e;
+    --mid:   #6f5651;
+    --light: #eed0ca;
+    --flame: #e0685a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── PROGRESS BAR ── */
+  #progress-bar {
+    position: fixed; top: 0; left: 0; height: 3px;
+    background: var(--gold); z-index: 2000;
+    width: 0%; transition: width 0.1s linear;
+  }
+
+  /* ── STICKY MASTHEAD ── */
+  .masthead {
+    position: sticky; top: 0; z-index: 1000;
+    background: var(--ink); color: var(--paper);
+    text-align: center; padding: 1.2rem 2rem 1rem;
+    border-bottom: 4px solid var(--gold);
+    transition: padding 0.3s;
+  }
+  .masthead.compact { padding: 0.5rem 2rem; }
+  .masthead-top {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Oswald', sans-serif; font-size: 0.65rem;
+    letter-spacing: 0.2em; color: #888; margin-bottom: 0.6rem;
+    text-transform: uppercase;
+    transition: opacity 0.3s, max-height 0.3s;
+    max-height: 40px; overflow: hidden;
+  }
+  .masthead.compact .masthead-top { opacity: 0; max-height: 0; margin: 0; }
+  .section-of {
+    font-family: 'Oswald', sans-serif; font-size: 0.7rem;
+    letter-spacing: 0.42em; text-transform: uppercase;
+    color: var(--flame); margin-bottom: 0.3rem;
+  }
+  .paper-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 6vw, 4.5rem);
+    font-weight: 900; letter-spacing: -0.01em; line-height: 1;
+    color: var(--paper);
+    transition: font-size 0.3s;
+  }
+  .masthead.compact .paper-name { font-size: clamp(1.3rem, 3vw, 2rem); }
+  .paper-tagline {
+    font-family: 'Oswald', sans-serif; font-size: 0.7rem;
+    letter-spacing: 0.35em; color: var(--gold);
+    text-transform: uppercase; margin-top: 0.4rem;
+    transition: opacity 0.3s, max-height 0.3s;
+    max-height: 30px; overflow: hidden;
+  }
+  .masthead.compact .paper-tagline { opacity: 0; max-height: 0; margin: 0; }
+
+  /* ── HOME LINK BAR ── */
+  .home-link-bar {
+    background: var(--ink); color: #999;
+    font-family: 'Oswald', sans-serif; font-size: 0.6rem;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    padding: 0.55rem 1rem; text-align: center;
+    border-top: 1px solid #333;
+  }
+  .home-link-bar a { color: var(--gold); text-decoration: none; }
+  .home-link-bar .sep { margin: 0 0.6rem; color: #444; }
+
+  /* ── BREAKING TICKER ── */
+  .breaking-bar {
+    background: var(--gold); color: var(--ink);
+    font-family: 'Oswald', sans-serif; font-size: 0.75rem;
+    letter-spacing: 0.25em; text-transform: uppercase; font-weight: 700;
+    overflow: hidden; white-space: nowrap; padding: 0.45rem 0;
+  }
+  .ticker-track {
+    display: inline-block;
+    animation: ticker 40s linear infinite;
+  }
+  .ticker-sep { margin: 0 2rem; opacity: 0.4; }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 92vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 6rem 2rem 5rem;
+    border-bottom: 1px solid #e2cdc8;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: repeating-linear-gradient(
+      to bottom, transparent, transparent 29px, #e6d2cc 29px, #e6d2cc 30px
+    );
+    opacity: 0.45;
+  }
+  .hero-vol {
+    font-family: 'Oswald', sans-serif; font-size: 0.65rem;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--mid); margin-bottom: 1.4rem; position: relative;
+    opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
+  }
+  .hero-gold-rule {
+    width: 60px; height: 2px; background: var(--gold);
+    margin: 0 auto 1.2rem; position: relative;
+    opacity: 0; animation: fadeUp 0.6s 0.35s forwards;
+  }
+  .hero-kicker {
+    font-family: 'Oswald', sans-serif; font-size: 0.7rem;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.2rem; position: relative;
+    opacity: 0; animation: fadeUp 0.6s 0.45s forwards;
+  }
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.2rem, 10vw, 9rem);
+    font-weight: 900; line-height: 0.93;
+    letter-spacing: -0.02em; color: var(--ink);
+    max-width: 1100px; position: relative;
+    opacity: 0; animation: fadeUp 0.9s 0.6s forwards;
+  }
+  .hero-headline em { font-style: italic; color: var(--gold); }
+  .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    font-style: italic; font-weight: 400;
+    color: #555; max-width: 640px; line-height: 1.75;
+    margin: 2rem auto 0; position: relative;
+    opacity: 0; animation: fadeUp 0.7s 0.9s forwards;
+  }
+  .hero-scroll {
+    position: absolute; bottom: 2rem; left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Oswald', sans-serif; font-size: 0.6rem;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--mid); display: flex; flex-direction: column;
+    align-items: center; gap: 0.5rem;
+    opacity: 0; animation: fadeIn 1s 1.6s forwards;
+  }
+  .scroll-needle {
+    width: 1px; height: 40px; background: var(--mid);
+    animation: needlePulse 1.8s ease-in-out infinite;
+  }
+  @keyframes needlePulse {
+    0%,100% { transform: scaleY(1); opacity: 0.35; }
+    50% { transform: scaleY(1.4); opacity: 1; }
+  }
+
+  /* ── SCROLL REVEALS ── */
+  .reveal {
+    opacity: 0; transform: translateY(44px);
+    transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1),
+                transform 0.85s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal-d1 { transition-delay: 0.1s; }
+  .reveal-d2 { transition-delay: 0.22s; }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-family: 'Oswald', sans-serif; font-size: 0.7rem;
+    letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.8rem;
+    padding-bottom: 0.4rem; border-bottom: 1px solid var(--gold);
+    display: inline-block;
+  }
+
+  /* ── ABOUT BAND ── */
+  .about-band {
+    background: var(--ink); color: var(--paper);
+    padding: 5rem 3rem;
+  }
+  .about-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1px 1fr;
+    gap: 4rem; align-items: center;
+  }
+  .about-divider { background: #2e2e2e; }
+  .about-stat {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(4rem, 7vw, 6.5rem);
+    font-weight: 900; color: var(--gold); line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .about-stat-label {
+    font-family: 'Oswald', sans-serif; font-size: 0.65rem;
+    letter-spacing: 0.25em; text-transform: uppercase; color: #888;
+    margin-bottom: 1.5rem;
+  }
+  .about-body { font-size: 1rem; line-height: 1.85; color: #bbb; }
+  .about-mission {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 700; line-height: 1.35; color: var(--paper);
+  }
+  .about-mission em { font-style: italic; color: var(--flame); }
+
+  /* ── MARQUEE ── */
+  .marquee-band {
+    border-top: 1px solid #e2cdc8; border-bottom: 1px solid #e2cdc8;
+    overflow: hidden; padding: 1.1rem 0;
+  }
+  .marquee-inner {
+    display: inline-block; white-space: nowrap;
+    animation: ticker 22s linear infinite;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-weight: 900; font-style: italic;
+    color: transparent; -webkit-text-stroke: 1.5px #e2cdc8;
+  }
+  .msep { -webkit-text-stroke: 1.5px var(--gold); margin: 0 1.2rem; }
+
+  /* ── CASES ── */
+  .cases-section { max-width: 1200px; margin: 0 auto; padding: 5rem 2rem; }
+  .cases-header { text-align: center; margin-bottom: 3.5rem; padding-bottom: 1.8rem; border-bottom: 3px double var(--ink); }
+  .cases-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900; line-height: 1.1; color: var(--ink);
+    margin-top: 0.6rem;
+  }
+  .cases-title em { font-style: italic; }
+
+  .cases-grid { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid #e2cdc8; }
+
+  .case-card {
+    text-decoration: none; color: inherit;
+    display: block; padding: 2.8rem 2.5rem;
+    border-right: 1px solid #e2cdc8;
+    position: relative; overflow: hidden;
+    transition: background 0.35s;
+  }
+  .case-card:last-child { border-right: none; }
+  a.case-card:hover { background: #f2d9d2; }
+
+  .case-meta {
+    font-family: 'Oswald', sans-serif; font-size: 0.62rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--mid); margin-bottom: 1rem;
+  }
+  .case-badge {
+    display: inline-block; background: var(--gold); color: var(--ink);
+    font-family: 'Oswald', sans-serif; font-size: 0.6rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 0.2rem 0.65rem; margin-bottom: 1rem; font-weight: 700;
+  }
+  .case-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 2.2vw, 1.95rem);
+    font-weight: 900; line-height: 1.15; color: var(--ink);
+    margin-bottom: 0.8rem;
+  }
+  .case-headline em { font-style: italic; }
+  .case-byline-row {
+    font-family: 'Oswald', sans-serif; font-size: 0.65rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--mid); margin-bottom: 1.5rem;
+    display: flex; gap: 1.5rem; flex-wrap: wrap;
+  }
+  .case-byline-row span { color: var(--ink); font-weight: 600; }
+
+  .case-score-box {
+    background: var(--ink); padding: 1rem 1.2rem;
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1.8rem;
+  }
+  .case-score-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem; font-weight: 900;
+    color: var(--gold); line-height: 1;
+  }
+  .case-score-info {
+    font-family: 'Oswald', sans-serif; font-size: 0.6rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: #888; line-height: 1.7;
+  }
+
+  .case-excerpt { font-size: 0.95rem; line-height: 1.82; color: #444; margin-bottom: 2rem; }
+
+  .case-cta {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'Oswald', sans-serif; font-size: 0.68rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink); border-bottom: 1.5px solid var(--ink);
+    padding-bottom: 0.2rem;
+    transition: gap 0.3s, color 0.3s, border-color 0.3s;
+  }
+  a.case-card:hover .case-cta { gap: 0.9rem; color: var(--gold); border-color: var(--gold); }
+
+  /* ── PULL QUOTE ── */
+  .quote-band { background: var(--ink); padding: 5rem 2rem; text-align: center; }
+  .quote-band blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3.2vw, 2.8rem);
+    font-weight: 700; font-style: italic;
+    color: var(--paper); line-height: 1.35;
+    max-width: 900px; margin: 0 auto 1.5rem;
+    border-top: 3px solid #333; border-bottom: 3px solid #333;
+    padding: 1.5rem 0;
+  }
+  .quote-band blockquote .gold { color: var(--gold); }
+  .quote-band cite {
+    font-family: 'Oswald', sans-serif; font-size: 0.65rem;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: #888; font-style: normal;
+  }
+
+  /* ── FOOTER ── */
+  .paper-footer {
+    background: var(--ink); color: #666;
+    text-align: center; padding: 2rem 1rem 1.5rem;
+    font-family: 'Oswald', sans-serif; font-size: 0.6rem;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    border-top: 4px solid var(--gold);
+    line-height: 2.2;
+  }
+  .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 900;
+    color: var(--paper); letter-spacing: -0.01em;
+    margin-bottom: 0.3rem;
+  }
+  .footer-tagline { color: var(--gold); margin-bottom: 1.2rem; letter-spacing: 0.35em; }
+  .footer-rule { width: 50px; height: 1px; background: #333; margin: 1rem auto; }
+  .paper-footer a { color: var(--gold); text-decoration: none;
+    border-bottom: 1px solid var(--gold); margin: 0 0.6rem;
+    display: inline-block; font-size: 0.55rem; letter-spacing: 0.25em;
+    padding-bottom: 1px; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn { to { opacity: 1; } }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 800px) {
+    .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-divider { display: none; }
+    .about-band { padding: 3.5rem 1.5rem; }
+    .cases-grid { grid-template-columns: 1fr; }
+    .case-card { border-right: none; border-bottom: 1px solid #e2cdc8; }
+    .case-card:last-child { border-bottom: none; }
+    .masthead-top { font-size: 0.55rem; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- MASTHEAD -->
+<header class="masthead" id="masthead">
+  <div class="masthead-top">
+    <span>Established 2026 &middot; Vol. XLII</span>
+    <span>Bangalore, India</span>
+    <span>Friday, October 2, 2026</span>
+  </div>
+  <div class="section-of">The Daily Forensic Presents</div>
+  <div class="paper-name">The Attendance Files</div>
+  <div class="paper-tagline">All The Absences That&rsquo;s Fit To Print</div>
+</header>
+
+<!-- HOME LINK BAR -->
+<div class="home-link-bar">
+  <a href="https://thedailyforensic.github.io/" target="_blank" rel="noopener">&larr; The Daily Forensic</a>
+  <span class="sep">&middot;</span>The Attendance Files
+  <span class="sep">&middot;</span>Vol. XLII No. 117
+</div>
+
+<!-- BREAKING TICKER -->
+<div class="breaking-bar">
+  <div class="ticker-track">
+    <span>Breaking: 52 absences in 92 school days, the register has stopped flinching</span>
+    <span class="ticker-sep">&middot;</span>
+    <span>The subject was not located for comment on 52 of them</span>
+    <span class="ticker-sep">&middot;</span>
+    <span>Wednesday remains unexplained &middot; The building was open &middot; He was not in it</span>
+    <span class="ticker-sep">&middot;</span>
+    <span>Register read line by line &middot; Half-day codes excluded &middot; Interpret with skepticism</span>
+    <span class="ticker-sep">&middot;</span>
+    <span>The global attendance community did not ask for this &middot; And yet &middot; Here we are</span>
+    <span class="ticker-sep">&middot;</span>
+    <span>Vol. XLII &middot; No. 117 now in circulation &middot; Read now</span>
+    <span class="ticker-sep">&middot;</span>
+    <span>Breaking: 52 absences in 92 school days, the register has stopped flinching</span>
+    <span class="ticker-sep">&middot;</span>
+    <span>The subject was not located for comment on 52 of them</span>
+    <span class="ticker-sep">&middot;</span>
+    <span>Wednesday remains unexplained &middot; The building was open &middot; He was not in it</span>
+    <span class="ticker-sep">&middot;</span>
+    <span>Register read line by line &middot; Half-day codes excluded &middot; Interpret with skepticism</span>
+    <span class="ticker-sep">&middot;</span>
+    <span>The global attendance community did not ask for this &middot; And yet &middot; Here we are</span>
+    <span class="ticker-sep">&middot;</span>
+    <span>Vol. XLII &middot; No. 117 now in circulation &middot; Read now</span>
+    <span class="ticker-sep">&middot;</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-vol">Vol. XLII &middot; Special Section &middot; The Internet&rsquo;s Most Rigorous&trade; Attendance Publication</div>
+  <div class="hero-gold-rule"></div>
+  <div class="hero-kicker">Registers &middot; Rates &middot; Regrets</div>
+  <h1 class="hero-headline">Every Absence,<br><em>Documented.</em></h1>
+  <p class="hero-sub">
+    Fifty-two absences, ninety-two school days, and one unbroken sixteen-day vanishing act: examined here, at length, and without rounding.
+  </p>
+  <div class="hero-scroll">
+    <span>Scroll to investigate</span>
+    <div class="scroll-needle"></div>
+  </div>
+</section>
+
+<!-- ABOUT BAND -->
+<section class="about-band reveal">
+  <div class="about-inner">
+    <div>
+      <div class="about-stat">I</div>
+      <div class="about-stat-label">Reports Filed &middot; The Attendance Files</div>
+      <p class="about-body">
+        We are an attendance-forensics desk operating out of Bangalore, staffed by correspondents with one register, one spreadsheet, and very strong opinions about Wednesdays. Our team works around the clock, for up to twelve consecutive minutes, to bring you absence findings the scientific community did not ask for, but the register cannot deny.
+      </p>
+    </div>
+    <div class="about-divider"></div>
+    <div>
+      <div class="section-label" style="color:#555; border-color:#333;">Our Mandate</div>
+      <div class="about-mission">
+        We count every <em>absence.</em><br>
+        We chart every <em>Wednesday.</em><br>
+        We file every <em>register.</em>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-band">
+  <div class="marquee-inner">
+    ATTENDANCE <span class="msep">&bull;</span> ABSENCE <span class="msep">&bull;</span> THE REGISTER <span class="msep">&bull;</span> WEDNESDAYS <span class="msep">&bull;</span> ATTENDANCE <span class="msep">&bull;</span> ABSENCE <span class="msep">&bull;</span> THE REGISTER <span class="msep">&bull;</span> WEDNESDAYS <span class="msep">&bull;</span> 
+  </div>
+</div>
+
+<!-- CASES -->
+<section class="cases-section">
+  <div class="cases-header reveal">
+    <div class="section-label">Filed Reports &middot; The Attendance Files</div>
+    <h2 class="cases-title">Dossiers &amp; <em>Investigations</em></h2>
+  </div>
+
+  <div class="cases-grid">
+
+    <a class="case-card reveal reveal-d1" href="../parth-sarthi-dossier/index.html">
+      <div class="case-meta">Vol. XLII &middot; No. 117 &middot; October 2, 2026</div>
+      <div class="case-badge">Enhanced Absence Edition</div>
+      <h3 class="case-headline">Fifty-Two Absences, Ninety-Two School Days, and One Unbroken Sixteen-Day Vanishing:<br><em>The Parth Sarthi Attendance Dossier</em></h3>
+      <div class="case-byline-row">
+        By <span>Dr. Rohan Pixel</span> &middot; Forensic Correspondent &middot; The Daily Forensic
+      </div>
+      <div class="case-score-box">
+        <div class="case-score-num">43.5%</div>
+        <div class="case-score-info">
+          Overall Attendance Rate &middot; 40 of 92<br>
+          Rank In School: 1417 of 1420<br>
+          One Unbroken 16-Day Block
+        </div>
+      </div>
+      <p class="case-excerpt">
+        Grade 11 Science INT A, Roll 19, was recorded present on 40 of 92 school days. The Wednesdays, the blocks, the class median of 16 and the sixteen consecutive misses in the middle of the year are examined here, at length, and without rounding.
+      </p>
+      <div class="case-cta">Read Full Dossier &rarr;</div>
+    </a>
+
+    <div class="case-card reveal reveal-d2">
+      <div class="case-meta">Section Charter &middot; Established October 2026</div>
+      <div class="case-badge">The Attendance Desk</div>
+      <h3 class="case-headline">The Charter: <em>One Register, Ninety-Two Days, No Rounding</em></h3>
+      <div class="case-byline-row">
+        By <span>The Attendance Desk</span> &middot; Standing Section &middot; The Daily Forensic
+      </div>
+      <div class="case-score-box">
+        <div class="case-score-num">92</div>
+        <div class="case-score-info">
+          School Days Under Review<br>
+          1 Register &middot; Read Line By Line<br>
+          Half-Day Codes: Excluded
+        </div>
+      </div>
+      <p class="case-excerpt">
+        The Attendance Files is the attendance-forensics section of The Daily Forensic: a standing desk that reads the register the way others read the scene. Every figure is drawn from the register itself, the rate is always the same formula (present over possible, in percent), and nothing here is rounded for comfort.
+      </p>
+      <div class="case-cta">In Force From October 2, 2026</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="quote-band reveal">
+  <blockquote>
+    &ldquo;We thought it was a clerical error.<br>
+    Then we read the register.<br>
+    And the numbers kept coming back <span class="gold">absent.</span>&rdquo;
+  </blockquote>
+  <cite>The Attendance Register &middot; Reluctant Source &middot; Identity Withheld</cite>
+</section>
+
+<!-- FOOTER -->
+<footer class="paper-footer">
+  <div class="footer-name">The Attendance Files</div>
+  <div class="footer-tagline">All The Absences That&rsquo;s Fit To Print</div>
+  <div class="footer-rule"></div>
+  &copy; 2026 The Attendance Files &middot; A Special Section of The Daily Forensic &middot; All figures drawn from a single register &middot; Bangalore, India
+  <br>
+  <a href="https://thedailyforensic.github.io/" target="_blank" rel="noopener">The Daily Forensic &rarr;</a>
+  <a href="../parth-sarthi-dossier/index.html">Parth Sarthi Dossier &rarr;</a>
+</footer>
+
+<script>
+  // Progress bar + compact masthead
+  const bar = document.getElementById('progress-bar');
+  const mh = document.getElementById('masthead');
+  window.addEventListener('scroll', () => {
+    const h = document.body.scrollHeight - window.innerHeight;
+    if (bar) bar.style.width = (window.scrollY / h * 100) + '%';
+    if (mh) mh.classList.toggle('compact', window.scrollY > 80);
+  });
+
+  // Scroll reveals (with viewport/timer fallback so content can never stay hidden)
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  function revealInView() {
+    document.querySelectorAll('.reveal:not(.in)').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.95) {
+        el.classList.add('in');
+      }
+    });
+  }
+  window.addEventListener('scroll', revealInView, { passive: true });
+  window.addEventListener('load', revealInView);
+  setTimeout(revealInView, 1500);
+</script>
+
+</body>
+</html>
