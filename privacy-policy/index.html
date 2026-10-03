@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy · The Attendance Files</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --paper: #f7e5e1;
+    --ink: #1a1a1a;
+    --gold: #c74a3e;
+    --mid: #6f5651;
+    --light: #eed0ca;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--paper); font-family: 'Source Serif 4', Georgia, serif; color: var(--ink); overflow-x: hidden; }
+  #progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); z-index: 2000; width: 0%; transition: width .1s linear; }
+  .masthead { position: sticky; top: 0; z-index: 1000; background: var(--ink); color: var(--paper); text-align: center; padding: 1.2rem 2rem 1rem; border-bottom: 4px solid var(--gold); transition: padding .3s; }
+  .masthead.compact { padding: .5rem 2rem; }
+  .masthead-top { display: flex; justify-content: space-between; align-items: center; font-family: 'Oswald', sans-serif; font-size: .65rem; letter-spacing: .2em; color: #888; margin-bottom: .6rem; text-transform: uppercase; transition: opacity .3s, max-height .3s; max-height: 40px; overflow: hidden; }
+  .masthead.compact .masthead-top { opacity: 0; max-height: 0; margin: 0; }
+  .paper-name { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 6vw, 4.5rem); font-weight: 900; letter-spacing: -.01em; line-height: 1; color: var(--paper); transition: font-size .3s; }
+  .masthead.compact .paper-name { font-size: clamp(1.3rem, 3vw, 2rem); }
+  .paper-tagline { font-family: 'Oswald', sans-serif; font-size: .68rem; letter-spacing: .38em; color: var(--gold); text-transform: uppercase; margin-top: .4rem; max-height: 30px; overflow: hidden; transition: opacity .3s, max-height .3s; }
+  .masthead.compact .paper-tagline { opacity: 0; max-height: 0; margin: 0; }
+  .home-link-bar { background: #0d0d0d; color: #999; font-family: 'Oswald', sans-serif; font-size: .6rem; letter-spacing: .28em; text-transform: uppercase; padding: .55rem 1rem; text-align: center; }
+  .home-link-bar a { color: var(--gold); text-decoration: none; }
+  .home-link-bar .sep { margin: 0 .6rem; color: #444; }
+  .container { max-width: 920px; margin: 0 auto; padding: 3rem 1.5rem; }
+  .article-category { font-family: 'Oswald', sans-serif; font-size: .68rem; letter-spacing: .32em; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: .4rem; display: inline-block; margin-bottom: 1.4rem; }
+  h1 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(1.9rem, 5vw, 3.5rem); line-height: 1.08; letter-spacing: -.015em; margin-bottom: 1.2rem; }
+  .byline { font-family: 'Oswald', sans-serif; font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--mid); border-bottom: 1px solid #ddd; padding: 1rem 0 1.2rem; margin-bottom: 2rem; }
+  .byline span { color: var(--ink); font-weight: 600; }
+  .prose { font-size: 1rem; line-height: 1.88; color: #222; text-align: justify; }
+  .prose p { margin-bottom: 1.4rem; }
+  .prose h2 { font-family: 'Oswald', sans-serif; font-size: .72rem; letter-spacing: .32em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid #ccc; padding-bottom: .5rem; margin: 2.6rem 0 1.4rem; }
+  .prose a { color: var(--gold); border-bottom: 1px solid var(--gold); text-decoration: none; }
+  .prose a:hover { color: var(--ink); border-color: var(--ink); }
+  .footer { background: var(--ink); color: #666; text-align: center; padding: 2.2rem 1rem 1.6rem; border-top: 4px solid var(--gold); font-family: 'Oswald', sans-serif; font-size: .6rem; letter-spacing: .28em; text-transform: uppercase; line-height: 2.2; }
+  .footer-name { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.7rem; color: var(--paper); letter-spacing: -.01em; text-transform: none; margin-bottom: .3rem; }
+  .footer a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold); }
+  @media (max-width: 768px) { .container { padding: 2rem 1.1rem; } .masthead { padding: .8rem 1rem .7rem; } .masthead-top { font-size: .55rem; } h1 { font-size: clamp(1.4rem, 6vw, 2.2rem) !important; } .prose { text-align: left; } }
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<header class="masthead" id="masthead">
+  <div class="masthead-top">
+    <span>Established 2026 · Vol. XLII</span>
+    <span>Bangalore, India</span>
+    <span id="dateline"></span>
+  </div>
+  <div class="paper-name">The Daily Forensic</div>
+  <div class="paper-tagline">The Attendance Files</div>
+</header>
+
+<div class="home-link-bar">
+  <a href="https://thedailyforensic.github.io/" target="_blank" rel="noopener">&larr; The Daily Forensic</a>
+  <span class="sep">&middot;</span>
+  <a href="https://thedailyforensic.github.io/the-attendence-report/Home/" target="_blank" rel="noopener">The Attendance Files</a>
+  <span class="sep">&middot;</span>Privacy Policy
+</div>
+
+<div class="container">
+  <div class="article-category">Privacy Policy &middot; The Attendance Files</div>
+  <h1>Privacy Policy</h1>
+  <div class="byline">
+    By <span>The Attendance Desk</span> &nbsp;|&nbsp; Standing Section &nbsp;|&nbsp; <span>The Daily Forensic</span> &nbsp;|&nbsp; <span id="datepub"></span>
+  </div>
+
+  <div class="prose">
+    <p>This privacy policy explains how <strong>The Attendance Files</strong> (a special section of <em>The Daily Forensic</em>) handles information when you visit our pages. We are a satirical forensic-journalism desk operating out of Bangalore. We do not run a surveillance operation. We do not monetise your curiosity. We count absences, not clicks.</p>
+
+    <h2>What We Collect</h2>
+    <p>Nothing. Zero. The register is the only database we maintain, and it contains 92 school days of attendance records for one Grade 11 Science INT A class. Your IP address, browser fingerprint, scrolling depth, or the fact that you lingered on the sixteen-day block — none of it is logged by us. GitHub Pages serves static HTML. There is no backend, no analytics script, no tracking pixel, no cookie consent banner because there are no cookies to consent to.</p>
+
+    <h2>Third-Party Requests</h2>
+    <p>The page loads two external resources, both cacheable and both necessary for the design to render as intended:</p>
+    <ul style="margin: 1rem 0 1.5rem 1.5rem; line-height: 1.9;">
+      <li><strong>Google Fonts</strong> (Playfair Display, Source Serif 4, Oswald) — loaded from <code>fonts.googleapis.com</code>. Google's privacy policy applies; we do not control it.</li>
+      <li><strong>Chart.js</strong> (v4.4.1) — loaded from <code>cdnjs.cloudflare.com</code>. Cloudflare's privacy policy applies; we do not control it.</li>
+    </ul>
+    <p>No other third-party scripts, iframes, social widgets, or advertising networks are present.</p>
+
+    <h2>Links to Other Properties</h2>
+    <p>Our pages link to <a href="https://thedailyforensic.github.io/">The Daily Forensic</a> front page and to individual case reports (e.g., <a href="https://thedailyforensic.github.io/the-manas-situation/">The Manas Situation</a>). Each is a separate GitHub Pages site under the <code>TheDailyForensic</code> account. Their privacy practices are their own; this policy covers only <code>the-attendence-report</code>.</p>
+
+    <h2>Data Retention</h2>
+    <p>Since we collect nothing, we retain nothing. The attendance register (92 rows, 30 students) is public record in the sense that it is published in the dossier. It will not be updated after the filing date.</p>
+
+    <h2>Your Rights</h2>
+    <p>You have the right to close this tab. You have the right to forget you ever read about Parth Sarthi's Wednesdays. You have the right to demand a privacy policy that is shorter than the register itself — this one qualifies.</p>
+
+    <h2>Contact</h2>
+    <p>Questions, complaints, or formal data-subject access requests may be directed to the editorial desk via the <a href="https://thedailyforensic.github.io/privacy-policy/">main site's privacy page</a>. We will respond with the same rigour we apply to attendance audits: thoroughly, skeptically, and with a sense of humour.</p>
+
+    <h2>Changes</h2>
+    <p>If this policy changes, the date below will update. We do not notify users because we do not know who you are.</p>
+
+    <p style="margin-top: 2.5rem; font-style: italic; color: var(--mid); font-size: .9rem;">Last updated: <span id="dateline2"></span></p>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-name">The Daily Forensic</div>
+  <div>The Attendance Files &middot; A Special Section &middot; Vol. XLII</div>
+  <div style="margin-top: .8rem;">
+    <a href="https://thedailyforensic.github.io/privacy-policy/" target="_blank" rel="noopener">Main Privacy Policy</a>
+    <span style="margin: 0 .8rem; color: #444;">&middot;</span>
+    <a href="https://thedailyforensic.github.io/the-attendence-report/Home/" target="_blank" rel="noopener">Back to Section</a>
+  </div>
+</footer>
+
+<script>
+  const ds = new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  document.getElementById('dateline').textContent = ds;
+  document.getElementById('datepub').textContent = ds;
+  document.getElementById('dateline2').textContent = ds;
+  const bar = document.getElementById('progress-bar');
+  const mh = document.getElementById('masthead');
+  if (bar || mh) window.addEventListener('scroll', () => {
+    if (bar) { const h = document.body.scrollHeight - window.innerHeight; bar.style.width = (window.scrollY / h * 100) + '%'; }
+    if (mh) mh.classList.toggle('compact', window.scrollY > 80);
+  });
+</script>
+</body>
+</html>
