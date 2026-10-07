@@ -38,7 +38,10 @@ img { max-width: 100%; height: auto; }
 .masthead.compact .masthead-top { opacity: 0; max-height: 0; margin: 0; }
 .paper-name { font-family: 'Playfair Display', serif;
   font-size: clamp(2.2rem, 7vw, 4.8rem); font-weight: 900; line-height: 1;
-  letter-spacing: -.01em; transition: font-size .3s; }
+  letter-spacing: -.01em; transition: font-size .3s; color: var(--paper); }
+a.paper-name { text-decoration: none; color: var(--paper); }
+a.paper-name:visited { color: var(--paper); }
+a.paper-name:hover { color: var(--paper); }
 .masthead.compact .paper-name { font-size: clamp(1.3rem, 3vw, 2rem); }
 .section-of { font-family: 'Oswald', sans-serif; font-size: .7rem;
   letter-spacing: .42em; text-transform: uppercase; color: var(--flame);
