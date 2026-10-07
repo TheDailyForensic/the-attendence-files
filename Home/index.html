@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -246,6 +246,7 @@
   .cases-title em { font-style: italic; }
 
   .cases-grid { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid #e2cdc8; }
+  .cases-grid > .case-card:only-child { grid-column: 1 / -1; }
 
   .case-card {
     text-decoration: none; color: inherit;
@@ -527,3 +528,4 @@
 
 </body>
 </html>
+
